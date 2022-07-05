@@ -1,0 +1,229 @@
+# Save the output of this file and use kubectl create -f to import
+# it into Kubernetes.
+#
+# Created with podman-4.1.1
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    io.kubernetes.cri-o.ContainerType/ckan: container
+    io.kubernetes.cri-o.ContainerType/datapusher: container
+    io.kubernetes.cri-o.ContainerType/db: container
+    io.kubernetes.cri-o.ContainerType/redis: container
+    io.kubernetes.cri-o.ContainerType/solr: container
+    io.kubernetes.cri-o.SandboxID/ckan: pod_docker
+    io.kubernetes.cri-o.SandboxID/datapusher: pod_docker
+    io.kubernetes.cri-o.SandboxID/db: pod_docker
+    io.kubernetes.cri-o.SandboxID/redis: pod_docker
+    io.kubernetes.cri-o.SandboxID/solr: pod_docker
+    io.kubernetes.cri-o.TTY/ckan: "false"
+    io.kubernetes.cri-o.TTY/datapusher: "false"
+    io.kubernetes.cri-o.TTY/db: "false"
+    io.kubernetes.cri-o.TTY/redis: "false"
+    io.kubernetes.cri-o.TTY/solr: "false"
+    io.podman.annotations.autoremove/ckan: "FALSE"
+    io.podman.annotations.autoremove/datapusher: "FALSE"
+    io.podman.annotations.autoremove/db: "FALSE"
+    io.podman.annotations.autoremove/redis: "FALSE"
+    io.podman.annotations.autoremove/solr: "FALSE"
+    io.podman.annotations.init/ckan: "FALSE"
+    io.podman.annotations.init/datapusher: "FALSE"
+    io.podman.annotations.init/db: "FALSE"
+    io.podman.annotations.init/redis: "FALSE"
+    io.podman.annotations.init/solr: "FALSE"
+    io.podman.annotations.privileged/ckan: "FALSE"
+    io.podman.annotations.privileged/datapusher: "FALSE"
+    io.podman.annotations.privileged/db: "FALSE"
+    io.podman.annotations.privileged/redis: "FALSE"
+    io.podman.annotations.privileged/solr: "FALSE"
+    io.podman.annotations.publish-all/ckan: "FALSE"
+    io.podman.annotations.publish-all/datapusher: "FALSE"
+    io.podman.annotations.publish-all/db: "FALSE"
+    io.podman.annotations.publish-all/redis: "FALSE"
+    io.podman.annotations.publish-all/solr: "FALSE"
+    org.opencontainers.image.base.digest/ckan: sha256:f5773b5d66ce8528ac327a87a0149a1d85742d6ba8f28d000288eeb3
+    org.opencontainers.image.base.name/ckan: docker.io/library/ubuntu:focal
+  creationTimestamp: "2022-06-29T22:15:49Z"
+  labels:
+    app: poddocker
+  name: pod_docker
+spec:
+  selector:
+    app: poddocker
+  type: NodePort
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    io.kubernetes.cri-o.ContainerType/ckan: container
+    io.kubernetes.cri-o.ContainerType/datapusher: container
+    io.kubernetes.cri-o.ContainerType/db: container
+    io.kubernetes.cri-o.ContainerType/redis: container
+    io.kubernetes.cri-o.ContainerType/solr: container
+    io.kubernetes.cri-o.SandboxID/ckan: pod_docker
+    io.kubernetes.cri-o.SandboxID/datapusher: pod_docker
+    io.kubernetes.cri-o.SandboxID/db: pod_docker
+    io.kubernetes.cri-o.SandboxID/redis: pod_docker
+    io.kubernetes.cri-o.SandboxID/solr: pod_docker
+    io.kubernetes.cri-o.TTY/ckan: "false"
+    io.kubernetes.cri-o.TTY/datapusher: "false"
+    io.kubernetes.cri-o.TTY/db: "false"
+    io.kubernetes.cri-o.TTY/redis: "false"
+    io.kubernetes.cri-o.TTY/solr: "false"
+    io.podman.annotations.autoremove/ckan: "FALSE"
+    io.podman.annotations.autoremove/datapusher: "FALSE"
+    io.podman.annotations.autoremove/db: "FALSE"
+    io.podman.annotations.autoremove/redis: "FALSE"
+    io.podman.annotations.autoremove/solr: "FALSE"
+    io.podman.annotations.init/ckan: "FALSE"
+    io.podman.annotations.init/datapusher: "FALSE"
+    io.podman.annotations.init/db: "FALSE"
+    io.podman.annotations.init/redis: "FALSE"
+    io.podman.annotations.init/solr: "FALSE"
+    io.podman.annotations.privileged/ckan: "FALSE"
+    io.podman.annotations.privileged/datapusher: "FALSE"
+    io.podman.annotations.privileged/db: "FALSE"
+    io.podman.annotations.privileged/redis: "FALSE"
+    io.podman.annotations.privileged/solr: "FALSE"
+    io.podman.annotations.publish-all/ckan: "FALSE"
+    io.podman.annotations.publish-all/datapusher: "FALSE"
+    io.podman.annotations.publish-all/db: "FALSE"
+    io.podman.annotations.publish-all/redis: "FALSE"
+    io.podman.annotations.publish-all/solr: "FALSE"
+    org.opencontainers.image.base.digest/ckan: sha256:f5773b5d66ce8528ac327a87a0149a1d85742d6ba8f28d000288eeb3
+    org.opencontainers.image.base.name/ckan: docker.io/library/ubuntu:focal
+  creationTimestamp: "2022-06-29T22:15:49Z"
+  labels:
+    app: poddocker
+  name: pod_docker
+spec:
+  containers:
+  - image: docker.io/clementmouchet/datapusher:latest
+    name: datapusher
+    resources: {}
+    securityContext:
+      capabilities:
+        drop:
+        - CAP_MKNOD
+        - CAP_NET_RAW
+        - CAP_AUDIT_WRITE
+  - args:
+    - postgres
+    env:
+    - name: PGDATA
+      value: /var/lib/postgresql/data/db
+    - name: DS_RO_PASS
+      value: datastore
+    - name: POSTGRES_PASSWORD
+      value: ckan
+    image: docker.io/library/postgres:latest
+    name: db
+    resources: {}
+    securityContext:
+      capabilities:
+        drop:
+        - CAP_MKNOD
+        - CAP_NET_RAW
+        - CAP_AUDIT_WRITE
+    volumeMounts:
+    - mountPath: /var/lib/postgresql/data
+      name: docker_pg_data-pvc
+  - args:
+    - solr-foreground
+    image: docker.io/library/solr:latest
+    name: solr
+    resources: {}
+    securityContext:
+      capabilities:
+        drop:
+        - CAP_MKNOD
+        - CAP_NET_RAW
+        - CAP_AUDIT_WRITE
+    volumeMounts:
+    - mountPath: /var/solr
+      name: 10793869eb5ca8508ffdeea0db5451edfa5ea14df8436fc99594d3493ad435c1-pvc
+    - mountPath: /opt/solr/server/solr/ckan/data
+      name: docker_solr_data-pvc
+  - args:
+    - redis-server
+    image: docker.io/library/redis:6.2
+    name: redis
+    resources: {}
+    securityContext:
+      capabilities:
+        drop:
+        - CAP_MKNOD
+        - CAP_NET_RAW
+        - CAP_AUDIT_WRITE
+    volumeMounts:
+    - mountPath: /data
+      name: 340864ff09c67e78cc60e050db7c565477d86b1fb78eddad206fa23afb345805-pvc
+  - args:
+    - ckan
+    - -c
+    - /etc/ckan/production.ini
+    - run
+    - --host
+    - 0.0.0.0
+    env:
+    - name: POSTGRES_PASSWORD
+      value: ckan
+    - name: CKAN_SQLALCHEMY_URL
+      value: postgresql://ckan:ckan@db/ckan
+    - name: CKAN_DATASTORE_READ_URL
+      value: postgresql://datastore_ro:datastore@db/datastore
+    - name: DS_RO_PASS
+      value: datastore
+    - name: CKAN_DATASTORE_WRITE_URL
+      value: postgresql://ckan:ckan@db/datastore
+    - name: CKAN_REDIS_URL
+      value: redis://redis:6379/1
+    - name: CKAN_SOLR_URL
+      value: http://solr:8983/solr/ckan
+    - name: CKAN_DATAPUSHER_URL
+      value: http://datapusher:8800
+    - name: CKAN_SITE_URL
+      value: http://localhost:5000
+    - name: POSTGRES_HOST
+      value: db
+    image: localhost/docker_ckan:latest
+    name: ckan
+    resources: {}
+    securityContext:
+      capabilities:
+        drop:
+        - CAP_MKNOD
+        - CAP_NET_RAW
+        - CAP_AUDIT_WRITE
+    volumeMounts:
+    - mountPath: /etc/ckan
+      name: docker_ckan_config-pvc
+    - mountPath: /usr/lib/ckan
+      name: docker_ckan_home-pvc
+    - mountPath: /var/lib/ckan
+      name: docker_ckan_storage-pvc
+  restartPolicy: Never
+  volumes:
+  - name: 10793869eb5ca8508ffdeea0db5451edfa5ea14df8436fc99594d3493ad435c1-pvc
+    persistentVolumeClaim:
+      claimName: 10793869eb5ca8508ffdeea0db5451edfa5ea14df8436fc99594d3493ad435c1
+  - name: docker_solr_data-pvc
+    persistentVolumeClaim:
+      claimName: docker_solr_data
+  - name: 340864ff09c67e78cc60e050db7c565477d86b1fb78eddad206fa23afb345805-pvc
+    persistentVolumeClaim:
+      claimName: 340864ff09c67e78cc60e050db7c565477d86b1fb78eddad206fa23afb345805
+  - name: docker_ckan_config-pvc
+    persistentVolumeClaim:
+      claimName: docker_ckan_config
+  - name: docker_ckan_home-pvc
+    persistentVolumeClaim:
+      claimName: docker_ckan_home
+  - name: docker_ckan_storage-pvc
+    persistentVolumeClaim:
+      claimName: docker_ckan_storage
+  - name: docker_pg_data-pvc
+    persistentVolumeClaim:
+      claimName: docker_pg_data
+status: {}
