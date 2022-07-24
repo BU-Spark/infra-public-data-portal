@@ -9,8 +9,8 @@ RUN mkdir -p /opt/solr/server/solr/$SOLR_CORE/conf
 RUN mkdir -p /opt/solr/server/solr/$SOLR_CORE/data
 
 # Adding Files
-ADD ./contrib/docker/solr/solrconfig.xml \
-./ckan/config/solr/schema.xml \
+ADD ./solrconfig.xml \ 
+./schema.xml \ 
 https://raw.githubusercontent.com/apache/lucene-solr/releases/lucene-solr/6.6.5/solr/server/solr/configsets/basic_configs/conf/currency.xml \
 https://raw.githubusercontent.com/apache/lucene-solr/releases/lucene-solr/6.6.5/solr/server/solr/configsets/basic_configs/conf/synonyms.txt \
 https://raw.githubusercontent.com/apache/lucene-solr/releases/lucene-solr/6.6.5/solr/server/solr/configsets/basic_configs/conf/stopwords.txt \
