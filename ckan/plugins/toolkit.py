@@ -47,7 +47,7 @@ from ckan.lib.helpers import (
     literal,
     chained_helper,
     redirect_to,
-    url_for,
+    url_for
 )
 from ckan.exceptions import (
     CkanVersionException,
@@ -64,6 +64,9 @@ from ckan.common import (
     asbool,
     asint,
     aslist,
+    login_user,
+    logout_user,
+    current_user
 )
 
 from ckan.lib.plugins import (
@@ -90,13 +93,13 @@ __all__ = [
     "h", "literal", "chained_helper", "redirect_to", "url_for",
     "CkanVersionException", "HelperError",
     "config", "_", "ungettext", "g", "c", "request",
-    "asbool", "asint", "aslist",
+    "asbool", "asint", "aslist", "login_user", "logout_user", "current_user",
     "DefaultDatasetForm", "DefaultGroupForm", "DefaultOrganizationForm",
     "error_shout",
     "mail_recipient", "mail_user",
     "render_snippet", "add_template_directory", "add_public_directory",
     "add_resource", "add_ckan_admin_tab",
-    "check_ckan_version", "requires_ckan_version", "get_endpoint",
+    "check_ckan_version", "requires_ckan_version", "get_endpoint"
 ]
 
 get_converter = get_validator
@@ -120,7 +123,7 @@ def add_template_directory(config_: CKANConfig, relative_path: str):
     The path is relative to the file calling this function.
 
     """
-    _add_served_directory(config_, relative_path, "extra_template_paths")
+    _add_served_directory(config_, relative_path, "plugin_template_paths")
 
 
 def add_public_directory(config_: CKANConfig, relative_path: str):
@@ -136,7 +139,7 @@ def add_public_directory(config_: CKANConfig, relative_path: str):
     from ckan.lib.helpers import _local_url
     from ckan.lib.webassets_tools import add_public_path
 
-    path = _add_served_directory(config_, relative_path, "extra_public_paths")
+    path = _add_served_directory(config_, relative_path, "plugin_public_paths")
     url = _local_url("/", locale="default")
     add_public_path(path, url)
 
@@ -147,18 +150,18 @@ def _add_served_directory(
     import inspect
     import os
 
-    assert config_var in ("extra_template_paths", "extra_public_paths")
+    assert config_var in ("plugin_template_paths", "plugin_public_paths")
     # we want the filename that of the function caller but they will
     # have used one of the available helper functions
     filename = inspect.stack()[2].filename
 
     this_dir = os.path.dirname(filename)
     absolute_path = os.path.join(this_dir, relative_path)
-    if absolute_path not in config_.get_value(config_var).split(","):
-        if config_.get_value(config_var):
-            config_[config_var] += "," + absolute_path
+    if absolute_path not in config_.get(config_var, []):
+        if config_var in config_:
+            config_[config_var] = [absolute_path] + config_[config_var]
         else:
-            config_[config_var] = absolute_path
+            config_[config_var] = [absolute_path]
     return absolute_path
 
 
