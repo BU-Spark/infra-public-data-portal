@@ -12,6 +12,37 @@ for filename in os.listdir (directory):
     # not sure if the part that says 'data={"package_id":"my_dataset"}' needs to be customized 
     # with our own info
 
+'''
+0.0.0.0 -> data.buspark.io, keep port 
+get api key by making an account (go to http://data.buspark.io) and 
+
+figure out the best way to show that data
+figure out metadata format (json file, what's the name of the project, what other data do we want to show, the year it was created" 
+
+let this python script take a parameter which would be the metadata 
+data: csv files 
+metadata: info about the csv files 
+dataset: not a single csv, a whole blob of files 
+
+
+the way langdon wants us to write the script 
+ * create a json file with name value pairs with the metadata 
+ * first pass is 
+ * a series of assignments 
+ * go through json file and substitute it to the api with placeholders 
+ * json decoder in python 
+ * have  constatn which is the api call 
+    * use <api_key> so you can insert that info into the <> 
+ * store all the metadata in ckan 
+ * separate into functions 
+    * create data_set 
+    * push data_set 
+    * takes parameters 
+ * in first pass maybe just try with single files 
+ * 
+'''
+
+
     '''
     This command can be used to overwrite an uploaded file with a new version of the file, 
     post to the resource_update() action and use the upload field: 
