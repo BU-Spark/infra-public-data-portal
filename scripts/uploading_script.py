@@ -11,3 +11,15 @@ for filename in os.listdir (directory):
     # code from https://docs.ckan.org/en/2.9/maintaining/filestore.html
     # not sure if the part that says 'data={"package_id":"my_dataset"}' needs to be customized 
     # with our own info
+
+    '''
+    This command can be used to overwrite an uploaded file with a new version of the file, 
+    post to the resource_update() action and use the upload field: 
+
+    curl -H'Authorization: your-api-key' 'http://yourhost/api/action/resource_update' --form upload=@newfiletoupload --form id=resourceid"
+    
+    * maybe include a way to check what files have already been uploaded
+      (either in a text, json, etc) and then use this command to update 
+      that file on the website
+    * wrap in os.system() to run the command 
+    '''
