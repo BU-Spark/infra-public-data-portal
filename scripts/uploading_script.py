@@ -7,6 +7,8 @@ import urllib.request
 
 file_extensions = [".csv", ".xlsx", ".zip"]
 API_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJ0QlNLV29XYTN1R2NDeEZTU1EtREh5ekNfaUhhRWNTQzFRUmtQRTVnaFgwIiwiaWF0IjoxNjY4MjYyNTM1fQ.SjGtjmAexPLECZmnV8OuCUWuosgiHNwzpq_SSjNqK0E"
+SITE_URL = 'http://data.buspark.io'
+
 # directory = "/path/to/data/directory"
 
 # for filename in os.listdir (directory):
@@ -31,7 +33,7 @@ def add_dataset (metadata_json):
    '''
    metadata includes: 
    - project name 
-   - part of 
+   - association/group it is part of 
    - project description 
    - github link 
    - link to data sets 
@@ -50,28 +52,27 @@ def add_dataset (metadata_json):
    print (data) 
 
 def get_groups (): 
-   # checks the current groups on the site 
-
-   # r = requests.get ("https://data.buspark.io/api/3/action/group_list") 
-   # groups = json.load (r) 
-   # if groups["success"] == true: 
-   #    return groups["result"] #returns a list of the names of all the groups 
-   # else: 
-   #    print (groups["error"]) #print the error message
-
-   # response = urllib2.urlopen('http://demo.ckan.org/api/3/action/group_list',
-   #      data_string)
-
-   response = urllib.request.urlopen ('http://data.buspark.io/api/3/action/group_list')
+   response = urllib.request.urlopen (SITE_URL + "/api/3/action/group_list")
    response_dict = json.loads(response.read()) 
 
    if response_dict['success']: 
+      print (response_dict['result'])
       return response_dict['result']
    else: 
       print (response_dict['error'])
 
+def get_datasets (): 
+   response = urllib.request.urlopen (SITE_URL + "/api/3/action/package_list")
+   response_dict = json.loads(response.read()) 
+
+   if response_dict['success']: 
+      print (response_dict['result'])
+      return response_dict['result']
+   else: 
+      print (response_dict['error'])
 
 # add_dataset ("jsons/row1.json")
 # c = pd.read_csv ("https://github.com/BU-Spark/summer2021internship/blob/master/Police%20Arrest%20Analysis/cumulativeNIBRS.csv", on_bad_lines='skip')
 # print (c)
 
+get_datasets() 
