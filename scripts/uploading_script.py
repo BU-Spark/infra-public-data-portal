@@ -16,13 +16,35 @@ API_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJ0QlNLV29XYTN1R2NDeE
 #     # not sure if the part that says 'data={"package_id":"my_dataset"}' needs to be customized 
 #     # with our own info
 
+def read_param_json (param_json): 
+   # reads in all of the parameters and does what it needs to do 
+   f = open (param_json) 
+   params = json.load (f) 
+   for key in params.keys():
+      param = params[key] 
+      # do what needs to be done with the parameters
+
+
 def add_dataset (metadata_json): 
+   '''
+   metadata includes: 
+   - project name 
+   - part of 
+   - project description 
+   - github link 
+   - link to data sets 
+   - file names 
+   - notes about the data set 
+   '''
     f = open (metadata_json) 
-    data = json.load (f)
-    requests.post('http://{API-TOKEN}:5000/api/action/resource_create',
-                  data={"package_id":"my_dataset"},
-                  headers={"X-CKAN-API-Key": API_TOKEN},
-                  files=[('upload', file("data/" + data["Datasets"]))])
+    data = json.load (f) 
+    all_files = data["File Names"]
+    file_names = all_files.split (", ")
+    for data_file in file_names 
+      requests.post('http://0.0.0.0:5000/api/action/resource_create',
+                     data={"package_id":"my_dataset"},
+                     headers={"X-CKAN-API-Key": API_TOKEN},
+                     files=[('upload', file(f"data/{data_file}"))])
     print (data) 
 
 
