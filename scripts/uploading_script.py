@@ -2,6 +2,8 @@ import requests
 import os 
 import json
 import pandas as pd 
+# from urllib.request import urlopen 
+import urllib.request
 
 file_extensions = [".csv", ".xlsx", ".zip"]
 API_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJ0QlNLV29XYTN1R2NDeEZTU1EtREh5ekNfaUhhRWNTQzFRUmtQRTVnaFgwIiwiaWF0IjoxNjY4MjYyNTM1fQ.SjGtjmAexPLECZmnV8OuCUWuosgiHNwzpq_SSjNqK0E"
@@ -36,18 +38,40 @@ def add_dataset (metadata_json):
    - file names 
    - notes about the data set 
    '''
-    f = open (metadata_json) 
-    data = json.load (f) 
-    all_files = data["File Names"]
-    file_names = all_files.split (", ")
-    for data_file in file_names 
-      requests.post('http://0.0.0.0:5000/api/action/resource_create',
-                     data={"package_id":"my_dataset"},
-                     headers={"X-CKAN-API-Key": API_TOKEN},
-                     files=[('upload', file(f"data/{data_file}"))])
-    print (data) 
+   f = open (metadata_json) 
+   data = json.load (f) 
+   all_files = data["File Names"]
+   file_names = all_files.split (", ")
+   for data_file in file_names: 
+     requests.post('http://0.0.0.0:5000/api/action/resource_create',
+                    data={"package_id":"my_dataset"},
+                    headers={"X-CKAN-API-Key": API_TOKEN},
+                    files=[('upload', file(f"data/{data_file}"))])
+   print (data) 
+
+def get_groups (): 
+   # checks the current groups on the site 
+
+   # r = requests.get ("https://data.buspark.io/api/3/action/group_list") 
+   # groups = json.load (r) 
+   # if groups["success"] == true: 
+   #    return groups["result"] #returns a list of the names of all the groups 
+   # else: 
+   #    print (groups["error"]) #print the error message
+
+   # response = urllib2.urlopen('http://demo.ckan.org/api/3/action/group_list',
+   #      data_string)
+
+   response = urllib.request.urlopen ('http://data.buspark.io/api/3/action/group_list')
+   response_dict = json.loads(response.read()) 
+
+   if response_dict['success']: 
+      return response_dict['result']
+   else: 
+      print (response_dict['error'])
 
 
-add_dataset ("jsons/row1.json")
-c = pd.read_csv ("https://github.com/BU-Spark/summer2021internship/blob/master/Police%20Arrest%20Analysis/cumulativeNIBRS.csv", on_bad_lines='skip')
-print (c)
+# add_dataset ("jsons/row1.json")
+# c = pd.read_csv ("https://github.com/BU-Spark/summer2021internship/blob/master/Police%20Arrest%20Analysis/cumulativeNIBRS.csv", on_bad_lines='skip')
+# print (c)
+
