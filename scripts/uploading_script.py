@@ -62,10 +62,11 @@ def get_groups ():
    response_dict = json.loads(response.read()) 
 
    if response_dict['success']: 
-      print (response_dict['result'])
+      # print (response_dict['result'])
       return response_dict['result']
    else: 
       print (response_dict['error'])
+      return None
 
 def get_datasets (): 
    # gets the list of all the datasets that are already on the website 
@@ -77,26 +78,21 @@ def get_datasets ():
       return response_dict['result']
    else: 
       print (response_dict['error'])
+      return None
 
 def find_tagged_datasets (tag): 
    # returns a list of all of the datsets on the site that have the given tag 
    response = urllib.request.urlopen (SITE_URL + f"/api/3/action/package_search?fq=tags:{tag}")
    response_dict = json.loads(response.read()) 
 
-   results = response_dict['result']['results']
-   
-   return results 
+   if response_dict['success']: 
+      results = response_dict['result']['results']
+      return results 
+   else: 
+      print (response_dict['error'])
+      return None 
 
 def find_dataset (name_of_dataset): 
    # given the name of a dataset, looks to see if that dataset is already uploaded on the site 
    datasets = get_datasets()
    return name_of_dataset in datasets
-
-
-
-# add_dataset ("jsons/row1.json")
-# c = pd.read_csv ("https://github.com/BU-Spark/summer2021internship/blob/master/Police%20Arrest%20Analysis/cumulativeNIBRS.csv", on_bad_lines='skip')
-# print (c)
-
-# print (find_dataset ("mijente-fall-2020"))
-find_tagged_datasets ("geojson")
