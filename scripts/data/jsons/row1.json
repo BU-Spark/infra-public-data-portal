@@ -1,0 +1,7 @@
+{ 
+    "name": "Police Overtime & Budget Analysis / Police Conduct (Fall 2020)", 
+    "part_of": "Independant", 
+    "description": "This project analyzes the Boston Police Department's budget, overtime, and payrolls to understand how the BPD uses its funding and to see the potential consequences that the recent $10 million budget cut may have on the organization.",
+    "github_link": "https://github.com/BU-Spark/CS506-Fall2020-Projects/tree/master/police_conduct_data", 
+    "file_link": "https://github.com/BU-Spark/CS506-Fall2020-Projects/tree/master/police_conduct_data/final_deliverable"
+} 
