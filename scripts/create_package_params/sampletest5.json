@@ -1,0 +1,9 @@
+{ 
+    "id": "5",
+    "name": "test5",
+    "private": false, 
+    "maintainer": "BU Spark!", 
+    "maintainer_email": "spark@bu.edu", 
+    "notes": "Here is a sample dataset.", 
+    "url": "https://github.com/BU-Spark/CS506-Fall2020-Projects/tree/master/police_conduct_data/final_deliverable" 
+}
