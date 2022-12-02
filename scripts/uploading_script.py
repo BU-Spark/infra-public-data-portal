@@ -2,6 +2,7 @@
 
 import requests
 import os 
+from dotenv import load_dotenv
 import json
 import pandas as pd 
 # from urllib.request import urlopen 
@@ -13,10 +14,11 @@ import pprint
 from urllib.parse import urlencode
 from bs4 import BeautifulSoup
 
+load_dotenv() 
+
 print("\n\n\n")
 
-# API_TOKEN = os.getenv ("API_TOKEN_STG")
-API_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI0TGdsNUJiTVpQdW41U1p5NFlZbU9hT09WQU5MV1hJTmpIQk5vVThEZnNzIiwiaWF0IjoxNjY5NjQ5NzcyfQ.cE3hjaVun5E32ZYYFQi3PTIbQqba8YcKVUmYCmieUEM"
+API_TOKEN = os.getenv ("API_TOKEN_STG")
 SITE_URL = 'http://data.stg.buspark.io'
 
 def read_param_json (param_json): 
@@ -81,9 +83,8 @@ def delete_package (package_id):
          method='POST', 
          url = f'{SITE_URL}/api/3/action/package_delete', 
          body=json.dumps(paramsDict), 
-         headers={'connection': 'keep-alive',
-   'Authorization': API_TOKEN,'Content-Type': 'application/json'}
-      )
+         headers={'connection': 'keep-alive', 'Authorization': API_TOKEN,'Content-Type': 'application/json'}
+   )
 
    print ("Updated datasets...")
    new_datasets = get_datasets() 
@@ -109,10 +110,14 @@ def add_resource (id, url, description, filenames_list):
       'Content-Type': 'multipart/form-data'
       })
 
-   files_to_add = {} 
+   # files_to_add = {} 
+   # for filename in filenames_list: 
+   #    print (filename)
+   #    files_to_add [filename] = (filename, open (f"data/{id}/{filename}", "rb"))
+
+   files_to_add = [] 
    for filename in filenames_list: 
-      print (filename)
-      files_to_add [filename] = (filename, open (f"data/{id}/{filename}", "rb"))
+      files_to_add.append ('upload', file (f"data/{id}/{filename}"))
 
    # request = http.request(
    #       method='POST', 
@@ -125,8 +130,9 @@ def add_resource (id, url, description, filenames_list):
          method='POST', 
          url = f'{SITE_URL}/api/3/action/resource_create', 
          files = files_to_add, 
-         headers= {'connection': 'keep-alive', 'Authorization': API_TOKEN,'Content-Type': 'multipart/form-data'}
-      )
+         headers= {'connection': 'keep-alive', 'Authorization': API_TOKEN,'Content-Type': 'multipart/form-data'}, 
+         data = params_dict
+   )
    return True 
 
 def upload_all_datasets (full_json): 
