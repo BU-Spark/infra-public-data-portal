@@ -10,12 +10,13 @@ import urllib.request
 import urllib.parse 
 import urllib3 
 import pprint 
+from urllib.parse import urlencode
 from bs4 import BeautifulSoup
 
 print("\n\n\n")
 
-API_TOKEN = os.getenv ("API_TOKEN_STG")
-# API_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI0TGdsNUJiTVpQdW41U1p5NFlZbU9hT09WQU5MV1hJTmpIQk5vVThEZnNzIiwiaWF0IjoxNjY5NjQ5NzcyfQ.cE3hjaVun5E32ZYYFQi3PTIbQqba8YcKVUmYCmieUEM"
+# API_TOKEN = os.getenv ("API_TOKEN_STG")
+API_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI0TGdsNUJiTVpQdW41U1p5NFlZbU9hT09WQU5MV1hJTmpIQk5vVThEZnNzIiwiaWF0IjoxNjY5NjQ5NzcyfQ.cE3hjaVun5E32ZYYFQi3PTIbQqba8YcKVUmYCmieUEM"
 SITE_URL = 'http://data.stg.buspark.io'
 
 def read_param_json (param_json): 
@@ -44,8 +45,11 @@ def create_package (jsonFile):
          method='POST', 
          url = f'{SITE_URL}/api/3/action/package_create', 
          body=json.dumps(DatasetDict), 
-         headers={}
+         headers={'connection': 'keep-alive',
+   'Authorization': API_TOKEN,'Content-Type': 'application/json'}
       )
+
+      # json.loads(request.data.decode('utf-8'))['json']
 
       # soup = BeautifulSoup(request.data, features="lxml")
 
@@ -231,12 +235,12 @@ def find_dataset (name_of_dataset):
    datasets = get_datasets()
    return name_of_dataset in datasets
 
-upload_dataset_example() 
+# upload_dataset_example() 
 
 # get_datasets_and_resources() 
 
 # upload_all_datasets("data/sample.json")
 
-# create_package ("sample2.json")
+create_package ("sample2.json")
 
 # get_datasets() 
