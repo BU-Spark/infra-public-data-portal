@@ -1,29 +1,11 @@
 { 
-    "1" : { 
+    "14" : { 
         "Project Name": "Police Overtime & Budget Analysis / Police Conduct (Fall 2020)", 
         "Part of": "Independant" , 
         "Project Description": "This project analyzes the Boston Police Department's budget, overtime, and payrolls to understand how the BPD uses its funding and to see the potential consequences that the recent $10 million budget cut may have on the organization.", 
         "Github Link": "BU-Spark/CS506-Fall2020-Projects/police_conduct_data", 
         "Link to Data Sets": "https://github.com/BU-Spark/CS506-Fall2020-Projects/tree/master/police_conduct_data/final_deliverable", 
         "File Names": "BPD_personnel_PRR_9_4_2020.xls", 
-        "Notes": "NONE"
-    }, 
-    "2" : {
-        "Project Name": "Mijente + ACLU (Fall 2020)", 
-        "Part of":"Independant", 
-        "Project Description": "This project analyzes data from Massachusetts OCPF data and census tract data to determine the financial contributions that police officers and police unions make to MA politics and how this may vary in cities where there are a majority of people of color.", 
-        "Github Link": "BU-Spark/CS506-Fall2020-Projects/mijente_police_in_mass", 
-        "Link to Data Sets": "https://github.com/BU-Spark/CS506-Fall2020-Projects/tree/master/mijente_police_in_mass/Deliverable2", 
-        "File Names": "OCPF_Police_Individual.csv, OCPF_Police_Union.csv", 
-        "Notes": "NONE"
-    }, 
-    "3" : { 
-        "Project Name": "Police Budget & OT Data (Spring 2021)", 
-        "Part of": "Independant", 	
-        "Project Description": "This project is a continuation of the 2020 Police Overtime & Budget Analysis / Police Conduct and aims to further: identify instances of financial excess in BPD spending, characterize wasteful BPD overtime practices, and use data to fill in narratives around waste & misconduct by individual BPD officers.", 
-        "Github Link": "BU-Spark/CS506Spring2021Repository/Police_Budget_Overtime_Project",
-        "Link to Data Sets": "https://github.com/BU-Spark/CS506Spring2021Repository/tree/master/Police_Budget_Overtime_Project/data", 
-        "File Names": "BAA_BOSTON_MARATHON, BFS_EVENT_ACTIVITY, BPD_personnel_PRR_9_4_2020.xls, BRIGHTON_DAY_PARADE, CARIBBEAN_CARNIVAL, CHINESE_NEW_YEAR, Court Overtime 2014 - 2019 - 2014.csv, DYKE_MARCH, EVACUATION_DAY_PARAD, Employee Earnings Report 2011-2019.csv, FIRST_NIGHT, GREEK_INDEP_DAY_PARA, HAITIAN_AMER_UNITY_P, HALLOWEEN_COVERAGE, INDEPENDENCE_DAY, MASS_MELNEA, NUISANCE_PATROL, Police Earnings Report 2011-2019.csv, STATE_OF_THE_CITY_AD, Special Events 2015 - present - 2015.csv, Special Events 2015 - present - 2016.csv, Special Events 2015 - present - 2017.csv, Special Events 2015 - present - 2018.csv, Special Events 2015 - present - 2019.csv, Special Events 2015 - present - 2020.csv, TD_GARDEN_EVENTS", 
         "Notes": "NONE"
     }
 }

@@ -114,12 +114,18 @@ def add_resource (id, url, description, filenames_list):
       print (filename)
       files_to_add [filename] = (filename, open (f"data/{id}/{filename}", "rb"))
 
+   # request = http.request(
+   #       method='POST', 
+   #       url = f'{SITE_URL}/api/3/action/resource_create', 
+   #       body=urllib3.encode_multipart_formdata(files_to_add, boundary=None), 
+   #       headers={'connection': 'keep-alive',
+   # 'Authorization': API_TOKEN,'Content-Type': 'multipart/form-data'}
+   #    )
    request = http.request(
          method='POST', 
          url = f'{SITE_URL}/api/3/action/resource_create', 
-         body=urllib3.encode_multipart_formdata(files_to_add, boundary=None), 
-         headers={'connection': 'keep-alive',
-   'Authorization': API_TOKEN,'Content-Type': 'multipart/form-data'}
+         files = files_to_add, 
+         headers= {'connection': 'keep-alive', 'Authorization': API_TOKEN,'Content-Type': 'multipart/form-data'}
       )
    return True 
 
