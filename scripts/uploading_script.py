@@ -29,8 +29,11 @@ def read_param_json (param_json):
 
 def create_package (jsonFile): 
    # creating a new package(dataset)
-
+   print ("Creating a new package") 
+   print() 
+   print ("Previous datasets...")
    prev_datasets = get_datasets() 
+   print () 
 
    http = urllib3.PoolManager(headers = {
    'connection': 'keep-alive',
@@ -49,23 +52,45 @@ def create_package (jsonFile):
    'Authorization': API_TOKEN,'Content-Type': 'application/json'}
       )
 
-      # json.loads(request.data.decode('utf-8'))['json']
-
-      # soup = BeautifulSoup(request.data, features="lxml")
-
-
-      # response = urllib.request.urlopen(request, data=None)
-      # assert response.code == 200
-
-      # response_dict = json.loads(response.read())
-      # assert response_dict['success'] is True
-
+   print ("Updated datasets...")
    new_datasets = get_datasets() 
+   print ()
 
    if len(prev_datasets) < len(new_datasets): 
       print ("Dataset succesfully uploaded")
    else: 
       print ("Dataset was not uploaded")
+
+def delete_package (package_id): 
+   print (f"Deleting package with id: {package_id}") 
+   print() 
+   print ("Previous datasets...")
+   prev_datasets = get_datasets() 
+   print () 
+
+   http = urllib3.PoolManager(headers = {
+   'connection': 'keep-alive',
+   'Authorization': API_TOKEN,
+   'Content-Type': 'application/json'
+   })
+
+   paramsDict = {"id": package_id}
+   request = http.request(
+         method='POST', 
+         url = f'{SITE_URL}/api/3/action/package_delete', 
+         body=json.dumps(paramsDict), 
+         headers={'connection': 'keep-alive',
+   'Authorization': API_TOKEN,'Content-Type': 'application/json'}
+      )
+
+   print ("Updated datasets...")
+   new_datasets = get_datasets() 
+   print ()
+
+   if len(prev_datasets) > len(new_datasets): 
+      print ("Dataset succesfully deleted")
+   else: 
+      print ("Dataset was not deleted")
 
 def upload_dataset_example (): # doesn't work atm
    # code block from the CKAN website 
@@ -241,6 +266,7 @@ def find_dataset (name_of_dataset):
 
 # upload_all_datasets("data/sample.json")
 
-create_package ("sample2.json")
+# create_package ("sample2.json")
+delete_package ("4")
 
 # get_datasets() 
