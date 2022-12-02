@@ -58,8 +58,10 @@ def create_package (jsonFile):
 
    if len(prev_datasets) < len(new_datasets): 
       print ("Dataset succesfully uploaded")
+      return True 
    else: 
       print ("Dataset was not uploaded")
+      return False 
 
 def delete_package (package_id): 
    print (f"Deleting package with id: {package_id}") 
@@ -89,74 +91,78 @@ def delete_package (package_id):
 
    if len(prev_datasets) > len(new_datasets): 
       print ("Dataset succesfully deleted")
+      return True 
    else: 
       print ("Dataset was not deleted")
+      return False 
 
-def upload_dataset_example (): # doesn't work atm
-   # code block from the CKAN website 
-
-   # Put the details of the dataset we're going to create into a dict.
-   # dataset_dict = {
-   #    'name': 'Test 1',
-   #    'notes': 'A long description of my dataset',
-   #    'file_path': "data/1/BPD_personnel_PRR_9_4_2020.xls"#test_set1.xls"
-   # }
-   dataset_dict = { 
-      "id":"Test", 
-      "name": "Test Dataset 1",
-      "private": False, 
-      "maintainer": "BU Spark!", 
-      "maintainer_email": "spark@bu.edu", 
-      "notes": "Here is a sample dataset.", 
-      "url": "https://github.com/BU-Spark/CS506-Fall2020-Projects/tree/master/police_conduct_data/final_deliverable" 
+def add_resource (id, url, description, filenames_list): 
+   params_dict = { 
+         "id" : id, 
+         "url" : url, 
+         "description" : description
    }
 
-   # Use the json module to dump the dictionary to a string for posting.
-   data_string = urllib.parse.quote(json.dumps(dataset_dict))
-   # data = urllib.parse.urlencode(dataset_dict).encode("UTF-8")
+   http = urllib3.PoolManager(headers = {
+      'connection': 'keep-alive',
+      'Authorization': API_TOKEN,
+      'Content-Type': 'multipart/form-data'
+      })
 
-   # We'll use the package_create function to create a new dataset.
-   request = urllib.request.Request(f'{SITE_URL}/api/action/package_create')
+   files_to_add = {} 
+   for filename in filenames_list: 
+      print (filename)
+      files_to_add [filename] = (filename, open (f"data/{id}/{filename}", "rb"))
 
-   # Creating a dataset requires an authorization header.
-   # Replace *** with your API key, from your user account on the CKAN site
-   # that you're creating the dataset on.
-   request.add_header('Authorization', API_TOKEN)
-
-   # Make the HTTP request.
-   response = urllib.request.urlopen(request, data=None)
-   assert response.code == 200
-
-   # Use the json module to load CKAN's response into a dictionary.
-   response_dict = json.loads(response.read())
-   assert response_dict['success'] is True
-
-   # package_create returns the created package as its result.
-   created_package = response_dict['result']
-   pprint.pprint(created_package)
+   request = http.request(
+         method='POST', 
+         url = f'{SITE_URL}/api/3/action/resource_create', 
+         body=urllib3.encode_multipart_formdata(files_to_add, boundary=None), 
+         headers={'connection': 'keep-alive',
+   'Authorization': API_TOKEN,'Content-Type': 'multipart/form-data'}
+      )
+   return True 
 
 def upload_all_datasets (full_json): 
    # taking the json with all of the information for each of the projects, uploads the projects to the website 
    f = open (full_json) 
    data = json.load(f) 
 
-   data_dict = { 
-      "name": "Test Dataset 1",
-      "private": False, 
-      "maintainer": "BU Spark!", 
-      "maintainer_email": "spark@bu.edu", 
-      "notes": "Here is a sample dataset.", 
-      "url": "https://github.com/BU-Spark/CS506-Fall2020-Projects/tree/master/police_conduct_data/final_deliverable" 
-   }
+   # data_json = json.dumps(data_dict) 
 
-   data_json = json.dumps(data_dict) 
+   for project_id in data:
+      create_params = { 
+         "id": project_id,
+         "name": f"project_{project_id}",
+         "title": data[project_id]["Project Name"], 
+         "private": False, 
+         "maintainer": "BU Spark!", 
+         "maintainer_email": "spark@bu.edu", 
+         "notes": data[project_id]["Project Description"], 
+         "url": data[project_id]["Github Link"]
+      }
 
-   for project_id in data: 
-      print (f"Trying to upload project {project_id} ({data[project_id]['Project Name']})")
-      response = requests.post (f'{SITE_URL}/api/action/package_create/authorization:{API_TOKEN}', data_json)
-      print (f"\tPackage created? {response}")
-      project_metadata = data[project_id] 
-      add_dataset (project_id, project_metadata)
+      json_obj = json.dump (create_params, open (f"package{project_id}_params.json", "w"))
+      # json_obj = json.loads(temp_str)
+
+      print (type (json_obj))
+      # print (type (json.loads(temp_str)))
+
+      package_created = create_package (f"package{project_id}_params.json")
+      
+      if (package_created): 
+         resources_added = add_resource (project_id, data[project_id]["Github Link"], data[project_id]["Project Description"], data[project_id]["File Names"].split(", "))
+         if resources_added: 
+            print (f"Files successfully uploaded for project id: {project_id}")
+         else: 
+            print (f"New package created with ID ({project_id}), however, could not add its associated files")
+      else: 
+         print (f"Files could not be uploaded for project: {data[project_id]['Project Name']} (ID: {project_id}). Package could not be created.")
+      # print (f"Trying to upload project {project_id} ({data[project_id]['Project Name']})")
+      # response = requests.post (f'{SITE_URL}/api/action/package_create/authorization:{API_TOKEN}', data_json)
+      # print (f"\tPackage created? {response}")
+      # project_metadata = data[project_id] 
+      # add_dataset (project_id, project_metadata)
 
 
    # # taking the json with all of the information for each of the projects, uploads the projects to the website 
@@ -264,9 +270,9 @@ def find_dataset (name_of_dataset):
 
 # get_datasets_and_resources() 
 
-# upload_all_datasets("data/sample.json")
+upload_all_datasets("data/sample.json")
 
-# create_package ("sample2.json")
-delete_package ("4")
+# create_package ("create_package_params/sampletest6.json")
+# delete_package ("1")
 
 # get_datasets() 
