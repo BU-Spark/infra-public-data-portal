@@ -302,7 +302,7 @@ def package_update(
             if hasattr(upload, 'mimetype'):
                 resource['mimetype'] = upload.mimetype
 
-        if 'size' not in resource and 'url_type' in resource:
+        if 'url_type' in resource:
             if hasattr(upload, 'filesize'):
                 resource['size'] = upload.filesize
 
@@ -322,7 +322,13 @@ def package_update(
         {"metadata_modified": datetime.datetime.utcnow()})
     model.Session.refresh(pkg)
 
-    pkg = model_save.package_dict_save(data, context)
+    include_plugin_data = False
+    user_obj = context.get('auth_user_obj')
+    if user_obj:
+        plugin_data = data.get('plugin_data', False)
+        include_plugin_data = user_obj.sysadmin and plugin_data
+
+    pkg = model_save.package_dict_save(data, context, include_plugin_data)
 
     context_org_update = context.copy()
     context_org_update['ignore_auth'] = True
@@ -357,8 +363,12 @@ def package_update(
     # we could update the dataset so we should still be able to read it.
     context['ignore_auth'] = True
     output = data_dict['id'] if return_id_only \
-            else _get_action('package_show')(context, {'id': data_dict['id']})
-
+            else _get_action('package_show')(
+                context,
+                {'id': data_dict['id'],
+                "include_plugin_data": include_plugin_data
+            }
+        )
     return output
 
 
@@ -652,7 +662,12 @@ def _group_or_org_update(
         raise NotFound('Group was not found.')
     context["group"] = group
 
-    data_dict['type'] = group.type
+    data_dict_type = data_dict.get('type') 
+    if data_dict_type is None:
+        data_dict['type'] = group.type
+    else:
+        if data_dict_type != group.type:
+            raise ValidationError({"message": "Type cannot be updated"})
 
     # get the schema
     group_plugin = lib_plugins.lookup_group_plugin(group.type)
@@ -823,7 +838,8 @@ def user_update(context: Context, data_dict: DataDict) -> ActionResult.UserUpdat
     upload.upload(uploader.get_max_image_size())
 
     if not context.get('defer_commit'):
-        model.repo.commit()
+        with logic.guard_against_duplicated_email(data_dict['email']):
+            model.repo.commit()
 
     author_obj = model.User.get(context.get('user'))
     include_plugin_extras = False
@@ -1161,7 +1177,7 @@ def bulk_update_private(context: Context, data_dict: DataDict) -> ActionResult.B
     :type datasets: list of strings
 
     :param org_id: id of the owning organization
-    :type org_id: int
+    :type org_id: string
     '''
 
     _check_access('bulk_update_private', context, data_dict)
@@ -1174,7 +1190,7 @@ def bulk_update_public(context: Context, data_dict: DataDict) -> ActionResult.Bu
     :type datasets: list of strings
 
     :param org_id: id of the owning organization
-    :type org_id: int
+    :type org_id: string
     '''
 
     _check_access('bulk_update_public', context, data_dict)
@@ -1187,7 +1203,7 @@ def bulk_update_delete(context: Context, data_dict: DataDict) -> ActionResult.Bu
     :type datasets: list of strings
 
     :param org_id: id of the owning organization
-    :type org_id: int
+    :type org_id: string
     '''
 
     _check_access('bulk_update_delete', context, data_dict)

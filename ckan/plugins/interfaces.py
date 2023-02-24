@@ -15,6 +15,7 @@ from pyutilib.component.core import Interface as _pca_Interface
 from flask.blueprints import Blueprint
 from flask.wrappers import Response
 
+from ckan.model.user import User
 from ckan.exceptions import CkanDeprecationWarning
 from ckan.types import (
     Action, AuthFunction, Context, DataDict, PFeedFactory,
@@ -112,7 +113,7 @@ class IMiddleware(Interface):
 
             class MyPlugin(p.SingletonPlugin):
 
-                p.implements(p.Middleware)
+                p.implements(p.IMiddleware)
 
                 def make_middleware(app, config):
 
@@ -231,7 +232,7 @@ class IResourceView(Interface):
         The available keys are:
 
         :param name: name of the view type. This should match the name of the
-            actual plugin (eg ``image_view`` or ``recline_view``).
+            actual plugin (eg ``image_view`` or ``datatables_view``).
         :param title: title of the view type. Will be displayed on the
             frontend. This should be translatable (ie wrapped with
             ``toolkit._('Title')``).
@@ -792,14 +793,18 @@ class IConfigDeclaration(Interface):
                 declaration.declare(group.enabled, "no").set_description(
                     "Enables feature"
                 )
-                declaration.declare(group.mode, "simple")
+                declaration.declare(group.mode, "simple").set_description(
+                    "Execution mode"
+                )
 
-        Produces the following config suggestion::
+        Run ``ckan config declaration my_ext --include-docs`` and get the
+        following config suggestion::
 
-            ####### MyExt config section #######
+            ## MyExt config section ######################
             # Enables feature
             ckanext.my_ext.feature.enabled = no
-            # ckanext.my_ext.feature.mode = simple
+            # Execution mode
+            ckanext.my_ext.feature.mode = simple
 
         See :ref:`declare configuration <declare-config-options>` guide for
         details.
@@ -1726,12 +1731,25 @@ class IAuthenticator(Interface):
         '''
 
     def abort(
-        self, status_code: int, detail: str, headers: Optional[dict[str, Any]],
-        comment: Optional[str]
+        self,
+        status_code: int,
+        detail: str,
+        headers: Optional[dict[str, Any]],
+        comment: Optional[str],
     ) -> tuple[int, str, Optional[dict[str, Any]], Optional[str]]:
-        u'''Called on abort.  This allows aborts due to authorization issues
-        to be overridden'''
+        """Called on abort.  This allows aborts due to authorization issues
+        to be overridden"""
         return (status_code, detail, headers, comment)
+
+    def authenticate(
+        self, identity: 'Mapping[str, Any]'
+    ) -> Optional["User"]:
+        """Called before the authentication starts
+        (that is after clicking the login button)
+
+        Plugins should return a user object if the authentication was
+        successful, or ``None``` otherwise.
+        """
 
 
 class ITranslation(Interface):

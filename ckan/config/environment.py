@@ -10,6 +10,7 @@ import pytz
 from typing import Union, cast
 
 import sqlalchemy
+import sqlalchemy.exc
 
 import ckan.model as model
 import ckan.plugins as p
@@ -73,11 +74,6 @@ def load_environment(conf: Union[Config, CKANConfig]):
 
     app_globals.reset()
 
-    # issue #3260: remove idle transaction
-    # Session that was used for getting all config params nor committed,
-    # neither removed and we have idle connection as result
-    model.Session.commit()
-
     # Build JavaScript translations. Must be done after plugins have
     # been loaded.
     build_js_translations()
@@ -120,7 +116,7 @@ def update_config() -> None:
 
     webassets_init()
 
-    for plugin in p.PluginImplementations(p.IConfigurer):
+    for plugin in reversed(list(p.PluginImplementations(p.IConfigurer))):
         # must do update in place as this does not work:
         # config = plugin.update_config(config)
         plugin.update_config(config)
@@ -196,6 +192,8 @@ def update_config() -> None:
     template_paths = [jinja2_templates_path]
 
     extra_template_paths = config.get_value('extra_template_paths')
+    if 'plugin_template_paths' in config:
+        template_paths = config['plugin_template_paths'] + template_paths
     if extra_template_paths:
         # must be first for them to override defaults
         template_paths = extra_template_paths.split(',') + template_paths
