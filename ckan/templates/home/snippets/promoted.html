@@ -1,5 +1,4 @@
 {% set intro = g.site_intro_text %}
-
 <div class="module-promotion card box">
   <div>
     {% if intro %}
@@ -7,13 +6,12 @@
     {% else %}
       <h1 class="page-heading">{{ _("Welcome to CKAN") }}</h1>
       <p>
-        {% trans %}This is a nice introductory paragraph about CKAN or the site
-        in general. We don't have any copy to go here yet but soon we will
+        {% trans %}This is an EXPLANATORY nice introductory paragraph about CKAN or the site
+        in general. We don't have any copy to go here yet but soon we will. This is a test to see if changes are reflected.
         {% endtrans %}
       </p>
     {% endif %}
   </div>
-
   {% block home_image %}
     <section class="featured media-overlay hidden-xs">
       <h2 class="media-heading">{% block home_image_caption %}{{ _("This is a featured section") }}{% endblock %}</h2>

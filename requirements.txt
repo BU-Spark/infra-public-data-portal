@@ -44,6 +44,8 @@ flask-babel==1.0.0
     # via -r requirements.in
 flask-multistatic==1.0
     # via -r requirements.in
+flask_debugtoolbar==0.10.1
+    # via -r requirements.in
 greenlet==1.1.2
     # via sqlalchemy
 idna==3.3

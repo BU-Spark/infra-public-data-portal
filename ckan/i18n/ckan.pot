@@ -3070,7 +3070,7 @@ msgid ""
 msgstr ""
 
 #: ckan/templates/home/snippets/promoted.html:8
-msgid "Welcome to CKAN"
+msgid "Welcome to BU Spark CKAN"
 msgstr ""
 
 #: ckan/templates/home/snippets/promoted.html:10
