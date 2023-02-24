@@ -1,0 +1,14 @@
+# spark-js:
+#   filter: rjsmin
+#   output: ckanext-spark/%(version)s-spark.js
+#   contents:
+#     - js/spark.js
+#   extra:
+#     preload:
+#       - base/main
+
+# spark-css:
+#   filter: cssrewrite
+#   output: ckanext-spark/%(version)s-spark.css
+#   contents:
+#     - css/spark.css
