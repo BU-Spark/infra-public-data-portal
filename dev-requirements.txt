@@ -6,6 +6,7 @@ coveralls   #Let Unpinned - Requires latest coveralls
 docutils==0.17.1
 Faker==13.3.4
 factory-boy==3.2.1
+flask_debugtoolbar==0.13.1
 flask-debugtoolbar==0.13.1
 freezegun==1.2.1
 ipdb==0.13.9

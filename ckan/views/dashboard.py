@@ -67,3 +67,4 @@ def groups() -> str:
 dashboard.add_url_rule(u'/datasets', view_func=datasets)
 dashboard.add_url_rule(u'/groups', view_func=groups)
 dashboard.add_url_rule(u'/organizations', view_func=organizations)
+dashboard.add_url_rule(u'/cows', view_func=organizations)
