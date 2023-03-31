@@ -1,0 +1,316 @@
+ID,Offense,Arrests_Adult,Arrests_Juvenile,Offenses_Reported,Offenses_Cleared,Classification,Year
+0,Murder and Nonnegligent Manslaughter,25,3,82,36,A: Crimes Against Persons,2016
+1,Negligent Manslaughter,2,0,11,4,A: Crimes Against Persons,2016
+2,Kidnapping/Abduction,127,3,498,293,A: Crimes Against Persons,2016
+3,Rape,189,22,"1,395",269,A: Crimes Against Persons,2016
+4,Sodomy,73,4,294,133,A: Crimes Against Persons,2016
+5,Sexual Assault With An Object,7,0,47,8,A: Crimes Against Persons,2016
+6,Fondling,154,17,956,218,A: Crimes Against Persons,2016
+7,Incest,10,1,70,19,A: Crimes Against Persons,2016
+8,Statutory Rape,75,21,688,125,A: Crimes Against Persons,2016
+9,Aggravated Assault,"5,783",533,"14,589","9,113",A: Crimes Against Persons,2016
+10,Simple Assault,"14,969","1,351","34,734","20,301",A: Crimes Against Persons,2016
+11,Intimidation,"1,613",132,"11,313","3,094",A: Crimes Against Persons,2016
+12,"Human Trafficking, Commercial Sex Acts",1,0,0,0,A: Crimes Against Persons,2016
+13,"Human Trafficking, Involuntary Servitude",0,0,3,3,A: Crimes Against Persons,2016
+14,Arson,46,33,438,97,A: Crimes Against Property,2016
+15,Bribery,2,0,8,7,A: Crimes Against Property,2016
+16,Burglary/Breaking & Entering,"1,644",206,"16,658","2,211",A: Crimes Against Property,2016
+17,Counterfeiting/Forgery,432,21,"2,896",765,A: Crimes Against Property,2016
+18,Destruction/Damage/Vandalism of Property,"2,087",408,"32,886","5,335",A: Crimes Against Property,2016
+19,Embezzlement,137,3,524,156,A: Crimes Against Property,2016
+20,Extortion/Blackmail,10,0,152,21,A: Crimes Against Property,2016
+21,False Pretenses/Swindle/Confidence Game,698,14,"7,637","1,254",A: Crimes Against Property,2016
+22,Credit Card/Automatic Teller Fraud,220,9,"4,305",347,A: Crimes Against Property,2016
+23,Impersonation,71,2,"4,978",216,A: Crimes Against Property,2016
+24,Welfare Fraud,3,0,9,4,A: Crimes Against Property,2016
+25,Wire Fraud,2,0,215,2,A: Crimes Against Property,2016
+26,Identity Theft,3,0,372,9,A: Crimes Against Property,2016
+27,Hacking/Computer Invasion,0,0,19,0,A: Crimes Against Property,2016
+28,Robbery,769,109,"3,432",895,A: Crimes Against Property,2016
+29,Pocket-picking,69,9,714,106,A: Crimes Against Property,2016
+30,Purse-snatching,30,2,305,41,A: Crimes Against Property,2016
+31,Shoplifting,"5,950",454,"12,849","6,287",A: Crimes Against Property,2016
+32,Theft From Building,766,53,"8,604","1,033",A: Crimes Against Property,2016
+33,Theft From Coin Operated Machine or Device,3,0,23,1,A: Crimes Against Property,2016
+34,Theft From Motor Vehicle,485,89,"11,871",672,A: Crimes Against Property,2016
+35,Theft of Motor Vehicle Parts/Accessories,24,2,"1,721",36,A: Crimes Against Property,2016
+36,All Other Larceny,"2,662",237,"31,480","3,622",A: Crimes Against Property,2016
+37,Motor Vehicle Theft,489,115,"6,360",830,A: Crimes Against Property,2016
+38,Stolen Property Offenses,730,138,"1,992","1,216",A: Crimes Against Property,2016
+39,Drug/Narcotic Violations,"7,605",203,"10,313","8,286",A: Crimes Against Society,2016
+40,Drug Equipment Violations,6,0,170,119,A: Crimes Against Society,2016
+41,Betting/Wagering,0,0,0,0,A: Crimes Against Society,2016
+42,Operating/Promoting/Assisting Gambling,16,0,19,12,A: Crimes Against Society,2016
+43,Gambling Equipment Violations,0,0,5,1,A: Crimes Against Society,2016
+44,Sports Tampering,0,0,0,0,A: Crimes Against Society,2016
+45,Pornography/Obscene Material,42,26,514,101,A: Crimes Against Society,2016
+46,Prostitution,441,1,368,304,A: Crimes Against Society,2016
+47,Assisting or Promoting Prostitution,21,0,37,27,A: Crimes Against Society,2016
+48,Purchasing Prostitution,6,0,7,7,A: Crimes Against Society,2016
+49,Weapon Law Violations,731,123,"2,808","1,741",A: Crimes Against Society,2016
+50,Animal Cruelty,4,0,9,5,A: Crimes Against Society,2016
+51,Total Group A Offenses,"49,232","4,344","229,378","69,382",A: Crimes Against Society,2016
+52,Bad Checks,233,4,,,B,2016
+53,Curfew/Loitering/Vagrancy Violations,11,0,,,B,2016
+54,Disorderly Conduct,"3,511",391,,,B,2016
+55,Driving Under the Influence,"8,092",45,,,B,2016
+56,Drunkenness,"5,771",52,,,B,2016
+57,Family Offenses (Nonviolent),"1,253",32,,,B,2016
+58,Liquor Law Violations,"1,755",322,,,B,2016
+59,Peeping Tom,3,0,,,B,2016
+60,Trespass of Real Property,"1,951",136,,,B,2016
+61,All Other Offenses,"32,200","1,319",,,B,2016
+62,Total Group B,"54,780","2,301",,,B,2016
+63,Murder and Nonnegligent Manslaughter,26,2,105,45,A: Crimes Against Persons,2017
+64,Negligent Manslaughter,3,0,7,4,A: Crimes Against Persons,2017
+65,Kidnapping/Abduction,148,6,519,314,A: Crimes Against Persons,2017
+66,Rape,191,17,"1,431",281,A: Crimes Against Persons,2017
+67,Sodomy,74,8,321,135,A: Crimes Against Persons,2017
+68,Sexual Assault With An Object,10,1,54,14,A: Crimes Against Persons,2017
+69,Fondling,189,31,"1,131",279,A: Crimes Against Persons,2017
+70,Incest,10,0,70,10,A: Crimes Against Persons,2017
+71,Statutory Rape,77,22,675,131,A: Crimes Against Persons,2017
+72,Aggravated Assault,"5,454",457,"13,713","8,754",A: Crimes Against Persons,2017
+73,Simple Assault,"14,920","1,305","34,189","20,186",A: Crimes Against Persons,2017
+74,Intimidation,"1,488",186,"10,702","2,929",A: Crimes Against Persons,2017
+75,"Human Trafficking, Commercial Sex Acts",4,0,18,9,A: Crimes Against Persons,2017
+76,"Human Trafficking, Involuntary Servitude",0,0,10,1,A: Crimes Against Persons,2017
+77,Arson,52,30,387,99,A: Crimes Against Property,2017
+78,Bribery,0,0,6,3,A: Crimes Against Property,2017
+79,Burglary/Breaking & Entering,"1,528",265,"14,463","2,028",A: Crimes Against Property,2017
+80,Counterfeiting/Forgery,403,15,"2,898",695,A: Crimes Against Property,2017
+81,Destruction/Damage/Vandalism of Property,"2,018",347,"30,407","5,121",A: Crimes Against Property,2017
+82,Embezzlement,129,3,536,153,A: Crimes Against Property,2017
+83,Extortion/Blackmail,11,4,159,20,A: Crimes Against Property,2017
+84,False Pretenses/Swindle/Confidence Game,689,12,"7,634","1,146",A: Crimes Against Property,2017
+85,Credit Card/Automatic Teller Fraud,161,2,"4,013",303,A: Crimes Against Property,2017
+86,Impersonation,86,1,"4,808",235,A: Crimes Against Property,2017
+87,Welfare Fraud,0,0,5,1,A: Crimes Against Property,2017
+88,Wire Fraud,5,0,261,6,A: Crimes Against Property,2017
+89,Identity Theft,7,0,548,15,A: Crimes Against Property,2017
+90,Hacking/Computer Invasion,0,0,35,0,A: Crimes Against Property,2017
+91,Robbery,680,101,"3,118",838,A: Crimes Against Property,2017
+92,Pocket-picking,69,6,682,110,A: Crimes Against Property,2017
+93,Purse-snatching,46,7,277,53,A: Crimes Against Property,2017
+94,Shoplifting,"5,068",364,"11,661","5,459",A: Crimes Against Property,2017
+95,Theft From Building,753,56,"8,449","1,028",A: Crimes Against Property,2017
+96,Theft From Coin Operated Machine or Device,1,2,23,1,A: Crimes Against Property,2017
+97,Theft From Motor Vehicle,426,92,"10,779",616,A: Crimes Against Property,2017
+98,Theft of Motor Vehicle Parts/Accessories,20,4,"1,606",37,A: Crimes Against Property,2017
+99,All Other Larceny,"2,424",206,"29,416","3,278",A: Crimes Against Property,2017
+100,Motor Vehicle Theft,461,71,"5,964",706,A: Crimes Against Property,2017
+101,Stolen Property Offenses,721,127,"1,886","1,177",A: Crimes Against Property,2017
+102,Drug/Narcotic Violations,"7,101",189,"9,783","7,984",A: Crimes Against Society,2017
+103,Drug Equipment Violations,10,1,218,155,A: Crimes Against Society,2017
+104,Betting/Wagering,0,0,0,0,A: Crimes Against Society,2017
+105,Operating/Promoting/Assisting Gambling,4,1,21,13,A: Crimes Against Society,2017
+106,Gambling Equipment Violations,0,0,0,0,A: Crimes Against Society,2017
+107,Sports Tampering,0,0,0,0,A: Crimes Against Society,2017
+108,Pornography/Obscene Material,43,23,565,96,A: Crimes Against Society,2017
+109,Prostitution,334,1,362,300,A: Crimes Against Society,2017
+110,Assisting or Promoting Prostitution,15,0,45,23,A: Crimes Against Society,2017
+111,Purchasing Prostitution,70,0,68,65,A: Crimes Against Society,2017
+112,Weapon Law Violations,774,109,"2,813","1,697",A: Crimes Against Society,2017
+113,Animal Cruelty,4,0,18,9,A: Crimes Against Society,2017
+114,Total Group A Offenses,"46,707","4,074","216,859","66,562",A: Crimes Against Society,2017
+115,Bad Checks,226,0,,,B,2017
+116,Curfew/Loitering/Vagrancy Violations,8,2,,,B,2017
+117,Disorderly Conduct,"3,458",412,,,B,2017
+118,Driving Under the Influence,"7,949",29,,,B,2017
+119,Drunkenness,"5,347",29,,,B,2017
+120,Family Offenses (Nonviolent),"1,334",45,,,B,2017
+121,Liquor Law Violations,"1,484",247,,,B,2017
+122,Peeping Tom,2,0,,,B,2017
+123,Trespass of Real Property,"2,186",191,,,B,2017
+124,All Other Offenses,"31,768","1,241",,,B,2017
+125,Total Group B,"53,762","2,196",,,B,2017
+126,Murder and Nonnegligent Manslaughter,19,0,78,31,A: Crimes Against Persons,2018
+127,Negligent Manslaughter,2,0,4,3,A: Crimes Against Persons,2018
+128,Kidnapping/Abduction,114,6,567,305,A: Crimes Against Persons,2018
+129,Rape,212,14,"1,664",303,A: Crimes Against Persons,2018
+130,Sodomy,97,6,361,172,A: Crimes Against Persons,2018
+131,Sexual Assault With An Object,2,0,33,5,A: Crimes Against Persons,2018
+132,Fondling,166,30,"1,131",262,A: Crimes Against Persons,2018
+133,Incest,6,3,70,15,A: Crimes Against Persons,2018
+134,Statutory Rape,72,23,742,124,A: Crimes Against Persons,2018
+135,Aggravated Assault,"5,288",376,"13,264","8,483",A: Crimes Against Persons,2018
+136,Simple Assault,"14,682","1,197","33,389","19,484",A: Crimes Against Persons,2018
+137,Intimidation,"1,399",186,"10,576","2,997",A: Crimes Against Persons,2018
+138,"Human Trafficking, Commercial Sex Acts",5,0,36,11,A: Crimes Against Persons,2018
+139,"Human Trafficking, Involuntary Servitude",0,0,8,3,A: Crimes Against Persons,2018
+140,Arson,39,17,283,71,A: Crimes Against Property,2018
+141,Bribery,2,0,13,11,A: Crimes Against Property,2018
+142,Burglary/Breaking & Entering,"1,375",127,"11,812","1,792",A: Crimes Against Property,2018
+143,Counterfeiting/Forgery,385,7,"2,772",667,A: Crimes Against Property,2018
+144,Destruction/Damage/Vandalism of Property,"1,934",308,"25,625","4,998",A: Crimes Against Property,2018
+145,Embezzlement,104,1,480,129,A: Crimes Against Property,2018
+146,Extortion/Blackmail,9,0,257,14,A: Crimes Against Property,2018
+147,False Pretenses/Swindle/Confidence Game,743,16,"8,307","1,108",A: Crimes Against Property,2018
+148,Credit Card/Automatic Teller Fraud,123,3,"3,382",256,A: Crimes Against Property,2018
+149,Impersonation,80,2,"4,420",235,A: Crimes Against Property,2018
+150,Welfare Fraud,0,0,7,0,A: Crimes Against Property,2018
+151,Wire Fraud,4,0,617,5,A: Crimes Against Property,2018
+152,Identity Theft,11,2,826,27,A: Crimes Against Property,2018
+153,Hacking/Computer Invasion,0,0,50,0,A: Crimes Against Property,2018
+154,Robbery,619,89,"2,737",753,A: Crimes Against Property,2018
+155,Pocket-picking,60,3,719,92,A: Crimes Against Property,2018
+156,Purse-snatching,25,0,318,38,A: Crimes Against Property,2018
+157,Shoplifting,"4,929",207,"11,528","5,144",A: Crimes Against Property,2018
+158,Theft From Building,606,37,"7,472",855,A: Crimes Against Property,2018
+159,Theft From Coin Operated Machine or Device,0,0,38,3,A: Crimes Against Property,2018
+160,Theft From Motor Vehicle,436,62,"9,328",611,A: Crimes Against Property,2018
+161,Theft of Motor Vehicle Parts/Accessories,16,0,"1,303",19,A: Crimes Against Property,2018
+162,All Other Larceny,"1,827",125,"25,165","2,565",A: Crimes Against Property,2018
+163,Motor Vehicle Theft,447,35,"5,301",658,A: Crimes Against Property,2018
+164,Stolen Property Offenses,550,66,"1,734",958,A: Crimes Against Property,2018
+165,Drug/Narcotic Violations,"6,464",133,"9,150","7,415",A: Crimes Against Society,2018
+166,Drug Equipment Violations,17,1,193,124,A: Crimes Against Society,2018
+167,Betting/Wagering,1,1,1,1,A: Crimes Against Society,2018
+168,Operating/Promoting/Assisting Gambling,4,0,23,19,A: Crimes Against Society,2018
+169,Gambling Equipment Violations,0,0,1,0,A: Crimes Against Society,2018
+170,Sports Tampering,0,0,0,0,A: Crimes Against Society,2018
+171,Pornography/Obscene Material,51,39,605,123,A: Crimes Against Society,2018
+172,Prostitution,330,1,295,228,A: Crimes Against Society,2018
+173,Assisting or Promoting Prostitution,20,0,46,28,A: Crimes Against Society,2018
+174,Purchasing Prostitution,18,0,23,20,A: Crimes Against Society,2018
+175,Weapon Law Violations,789,75,"2,782","1,657",A: Crimes Against Society,2018
+176,Animal Cruelty,11,0,45,16,A: Crimes Against Society,2018
+177,Total Group A Offenses,"44,093","3,198","199,581","62,838",A: Crimes Against Society,2018
+178,Bad Checks,130,1,,,B,2018
+179,Curfew/Loitering/Vagrancy Violations,3,0,,,B,2018
+180,Disorderly Conduct,"3,395",236,,,B,2018
+181,Driving Under the Influence,"7,758",16,,,B,2018
+182,Drunkenness,"5,336",23,,,B,2018
+183,Family Offenses (Nonviolent),"1,133",21,,,B,2018
+184,Liquor Law Violations,"1,171",114,,,B,2018
+185,Peeping Tom,2,1,,,B,2018
+186,Trespass of Real Property,"2,007",70,,,B,2018
+187,All Other Offenses,"31,641",997,,,B,2018
+188,Total Group B,"52,576","1,479",,,B,2018
+189,Murder and Nonnegligent Manslaughter,40,1,114,60,A: Crimes Against Persons,2019
+190,Negligent Manslaughter,5,1,13,8,A: Crimes Against Persons,2019
+191,Kidnapping/Abduction,150,6,591,350,A: Crimes Against Persons,2019
+192,Rape,191,16,"1,516",288,A: Crimes Against Persons,2019
+193,Sodomy,104,8,393,199,A: Crimes Against Persons,2019
+194,Sexual Assault With An Object,6,0,56,11,A: Crimes Against Persons,2019
+195,Fondling,201,24,"1,175",268,A: Crimes Against Persons,2019
+196,Incest,11,3,92,17,A: Crimes Against Persons,2019
+197,Statutory Rape,79,18,770,120,A: Crimes Against Persons,2019
+198,Aggravated Assault,"5,161",389,"13,723","8,408",A: Crimes Against Persons,2019
+199,Simple Assault,"14,282","1,092","34,276","19,086",A: Crimes Against Persons,2019
+200,Intimidation,"1,316",157,"11,565","2,860",A: Crimes Against Persons,2019
+201,"Human Trafficking, Commercial Sex Acts",4,0,18,8,A: Crimes Against Persons,2019
+202,"Human Trafficking, Involuntary Servitude",2,0,9,2,A: Crimes Against Persons,2019
+203,Arson,46,19,310,89,A: Crimes Against Property,2019
+204,Bribery,0,0,6,5,A: Crimes Against Property,2019
+205,Burglary/Breaking & Entering,"1,258",160,"10,672","1,705",A: Crimes Against Property,2019
+206,Counterfeiting/Forgery,400,8,"3,099",678,A: Crimes Against Property,2019
+207,Destruction/Damage/Vandalism of Property,"1,751",258,"25,271","4,603",A: Crimes Against Property,2019
+208,Embezzlement,79,3,423,90,A: Crimes Against Property,2019
+209,Extortion/Blackmail,6,0,273,20,A: Crimes Against Property,2019
+210,False Pretenses/Swindle/Confidence Game,719,15,"9,505","1,156",A: Crimes Against Property,2019
+211,Credit Card/Automatic Teller Fraud,103,2,"3,023",229,A: Crimes Against Property,2019
+212,Impersonation,77,0,"4,961",242,A: Crimes Against Property,2019
+213,Welfare Fraud,0,0,10,1,A: Crimes Against Property,2019
+214,Wire Fraud,6,2,902,8,A: Crimes Against Property,2019
+215,Identity Theft,10,1,883,23,A: Crimes Against Property,2019
+216,Hacking/Computer Invasion,1,0,57,1,A: Crimes Against Property,2019
+217,Robbery,502,90,"2,647",627,A: Crimes Against Property,2019
+218,Pocket-picking,67,8,740,110,A: Crimes Against Property,2019
+219,Purse-snatching,27,1,281,37,A: Crimes Against Property,2019
+220,Shoplifting,"4,854",183,"12,383","5,129",A: Crimes Against Property,2019
+221,Theft From Building,494,33,"7,511",679,A: Crimes Against Property,2019
+222,Theft From Coin Operated Machine or Device,3,1,19,1,A: Crimes Against Property,2019
+223,Theft From Motor Vehicle,335,66,"8,785",505,A: Crimes Against Property,2019
+224,Theft of Motor Vehicle Parts/Accessories,19,0,"1,344",29,A: Crimes Against Property,2019
+225,All Other Larceny,"1,469",115,"23,783","2,117",A: Crimes Against Property,2019
+226,Motor Vehicle Theft,367,94,"4,952",618,A: Crimes Against Property,2019
+227,Stolen Property Offenses,539,97,"1,638",927,A: Crimes Against Property,2019
+228,Drug/Narcotic Violations,"6,177",115,"9,446","7,221",A: Crimes Against Society,2019
+229,Drug Equipment Violations,11,0,162,98,A: Crimes Against Society,2019
+230,Betting/Wagering,1,0,7,1,A: Crimes Against Society,2019
+231,Operating/Promoting/Assisting Gambling,17,0,56,37,A: Crimes Against Society,2019
+232,Gambling Equipment Violations,0,0,4,0,A: Crimes Against Society,2019
+233,Sports Tampering,0,0,0,0,A: Crimes Against Society,2019
+234,Pornography/Obscene Material,74,40,762,143,A: Crimes Against Society,2019
+235,Prostitution,304,0,288,239,A: Crimes Against Society,2019
+236,Assisting or Promoting Prostitution,18,0,46,25,A: Crimes Against Society,2019
+237,Purchasing Prostitution,25,0,25,23,A: Crimes Against Society,2019
+238,Weapon Law Violations,731,95,"2,760","1,562",A: Crimes Against Society,2019
+239,Animal Cruelty,16,1,92,30,A: Crimes Against Society,2019
+240,Total Group A Offenses,"42,058","3,122","201,437","60,693",A: Crimes Against Society,2019
+241,Bad Checks,42,0,,,B,2019
+242,Curfew/Loitering/Vagrancy Violations,8,0,,,B,2019
+243,Disorderly Conduct,"3,355",168,,,B,2019
+244,Driving Under the Influence,"7,676",18,,,B,2019
+245,Drunkenness,"4,723",12,,,B,2019
+246,Family Offenses (Nonviolent),959,13,,,B,2019
+247,Liquor Law Violations,"1,123",68,,,B,2019
+248,Peeping Tom,2,0,,,B,2019
+249,Trespass of Real Property,"1,951",72,,,B,2019
+250,All Other Offenses,"31,451",844,,,B,2019
+251,Total Group B,"51,290","1,195",,,B,2019
+252,Murder and Nonnegligent Manslaughter,53,1,160,74,A: Crimes Against Persons,2020
+253,Negligent Manslaughter,6,0,6,5,A: Crimes Against Persons,2020
+254,Kidnapping/Abduction,120,1,495,284,A: Crimes Against Persons,2020
+255,Rape,192,13,"1,475",307,A: Crimes Against Persons,2020
+256,Sodomy,67,1,334,147,A: Crimes Against Persons,2020
+257,Sexual Assault With An Object,8,1,53,16,A: Crimes Against Persons,2020
+258,Fondling,172,17,984,239,A: Crimes Against Persons,2020
+259,Incest,12,0,62,13,A: Crimes Against Persons,2020
+260,Statutory Rape,72,17,593,104,A: Crimes Against Persons,2020
+261,Aggravated Assault,"5,768",338,"16,307","8,911",A: Crimes Against Persons,2020
+262,Simple Assault,"13,862",730,"35,400","18,184",A: Crimes Against Persons,2020
+263,Intimidation,"1,187",80,"13,969","2,572",A: Crimes Against Persons,2020
+264,"Human Trafficking, Commercial Sex Acts",3,0,23,5,A: Crimes Against Persons,2020
+265,"Human Trafficking, Involuntary Servitude",2,0,5,1,A: Crimes Against Persons,2020
+266,Arson,66,16,433,109,A: Crimes Against Property,2020
+267,Bribery,0,0,13,5,A: Crimes Against Property,2020
+268,Burglary/Breaking & Entering,"1,114",178,"10,363","1,564",A: Crimes Against Property,2020
+269,Counterfeiting/Forgery,233,10,"2,563",430,A: Crimes Against Property,2020
+270,Destruction/Damage/Vandalism of Property,"1,813",266,"30,417","4,644",A: Crimes Against Property,2020
+271,Embezzlement,44,0,342,55,A: Crimes Against Property,2020
+272,Extortion/Blackmail,8,0,540,25,A: Crimes Against Property,2020
+273,False Pretenses/Swindle/Confidence Game,453,23,"12,731",661,A: Crimes Against Property,2020
+274,Credit Card/Automatic Teller Fraud,68,2,"3,871",144,A: Crimes Against Property,2020
+275,Impersonation,42,0,"22,677",138,A: Crimes Against Property,2020
+276,Welfare Fraud,0,0,"3,773",0,A: Crimes Against Property,2020
+277,Wire Fraud,3,0,"1,047",4,A: Crimes Against Property,2020
+278,Identity Theft,13,0,"8,590",26,A: Crimes Against Property,2020
+279,Hacking/Computer Invasion,0,0,79,0,A: Crimes Against Property,2020
+280,Robbery,554,100,"3,008",710,A: Crimes Against Property,2020
+281,Pocket-picking,38,0,568,80,A: Crimes Against Property,2020
+282,Purse-snatching,14,1,225,30,A: Crimes Against Property,2020
+283,Shoplifting,"2,942",77,"10,921","3,175",A: Crimes Against Property,2020
+284,Theft From Building,304,19,"6,969",476,A: Crimes Against Property,2020
+285,Theft From Coin Operated Machine or Device,1,0,13,2,A: Crimes Against Property,2020
+286,Theft From Motor Vehicle,313,55,"11,794",498,A: Crimes Against Property,2020
+287,Theft of Motor Vehicle Parts/Accessories,14,1,"2,333",24,A: Crimes Against Property,2020
+288,All Other Larceny,"1,062",76,"24,828","1,629",A: Crimes Against Property,2020
+289,Motor Vehicle Theft,384,76,"7,054",685,A: Crimes Against Property,2020
+290,Stolen Property Offenses,572,100,"1,781",947,A: Crimes Against Property,2020
+291,Drug/Narcotic Violations,"5,072",88,"8,848","5,965",A: Crimes Against Society,2020
+292,Drug Equipment Violations,4,1,181,93,A: Crimes Against Society,2020
+293,Betting/Wagering,0,0,4,0,A: Crimes Against Society,2020
+294,Operating/Promoting/Assisting Gambling,10,0,54,34,A: Crimes Against Society,2020
+295,Gambling Equipment Violations,0,0,1,0,A: Crimes Against Society,2020
+296,Sports Tampering,0,0,0,0,A: Crimes Against Society,2020
+297,Pornography/Obscene Material,83,32,923,153,A: Crimes Against Society,2020
+298,Prostitution,93,0,134,82,A: Crimes Against Society,2020
+299,Assisting or Promoting Prostitution,6,0,23,9,A: Crimes Against Society,2020
+300,Purchasing Prostitution,0,0,1,1,A: Crimes Against Society,2020
+301,Weapon Law Violations,969,87,"3,339","1,802",A: Crimes Against Society,2020
+302,Animal Cruelty,14,0,116,28,A: Crimes Against Society,2020
+303,Total Group A Offenses,"37,830","2,407","250,423","55,090",A: Crimes Against Society,2020
+304,Bad Checks,28,0,,,B,2020
+305,Curfew/Loitering/Vagrancy Violations,9,0,,,B,2020
+306,Disorderly Conduct,"2,096",98,,,B,2020
+307,Driving Under the Influence,"5,197",30,,,B,2020
+308,Drunkenness,"2,442",9,,,B,2020
+309,Family Offenses (Nonviolent),"1,084",15,,,B,2020
+310,Liquor Law Violations,497,67,,,B,2020
+311,Peeping Tom,3,0,,,B,2020
+312,Trespass of Real Property,"1,387",83,,,B,2020
+313,All Other Offenses,"23,437",649,,,B,2020
+314,Total Group B,"36,180",951,,,B,2020
