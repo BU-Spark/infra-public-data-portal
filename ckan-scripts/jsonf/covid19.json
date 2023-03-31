@@ -1,0 +1,7 @@
+{
+	"projectName": "covid19",
+	"description": "Collecting information on COVID-19, specifically focusing on total number of recovered patients, total number of deaths and total number of current active cases. GitHub and Kaggle contain worldwide databases on the coronavirus, with frequent updates. The data gathered from the worldwide databases will be compared with health insurance access, collected from the CDC, in the United States across different demographics, gender, race, and location. Upon determining a relationship between coronavirus rates and health insurance access across different demographics, information will also be obtained on the total number of vaccinations across the same demographics. The ultimate goal is to determine the relationship among health insurance access and coronavirus recovery vs. death rates. With increased access to vaccinations, the goal is also to uncover how the previously determined relationship translates to vaccination access and completion. As there is data on coronavirus rates across the world, but only health insurance access within the United States, the primary focus of the relationship will be on the citizens of the USA.",
+	"sourceUrl" : "https://github.com/BU-Spark/CS506Spring2021Repository/tree/master/COVID19_Final_Project",
+	"resourceFolder": "Covid19",
+	"owner_org": "buspark"
+}
