@@ -1,7 +1,0 @@
-{
-	"projectName": "police_arrests_summer2021",
-	"description": "Collecting a record of adult/juvenile arrests, offenses reported, offenses cleared, classification, and year associated with offenses ",
-	"url" : "https://github.com/BU-Spark/summer2021internship/tree/master/Police%20Arrest%20Analysis",
-	"resourceFolder": "PoliceArrestsS21",
-	"owner_org": "buspark"
-}

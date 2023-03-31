@@ -1,8 +1,0 @@
-{
-	"projectName": "mijente_aclu_fall2020",
-	"description": "Collecting financial contributions of police officers and police affiliated unions to Massachusetts state level politicians and non-Boston mayors and city councilors to study the influence of police in MA politics. The political contributions data will be sourced from the state OCPF data and police will be separated out using their Occupation and Employer fields. We will summarize top donors, top recipients, and leaders of legislative committees as visualizations - bar charts, heat maps, etc. The second part of the analysis will involve comparing plurality People of color* cities in MA using census tract data on demographics and examining the police contributions to their mayors and city councilors. Across MA cities we want to specifically compare police department donations per capita calculated as the number of contributions divided by the total officers in that department.",
-	"url" : "https://github.com/BU-Spark/CS506-Fall2020-Projects/tree/master/mijente_police_in_mass/Deliverable2",
-	"resourceFolder": "Mijente",  
-	"owner_org": "buspark"
-}
-
