@@ -1,19 +1,34 @@
+#!/usr/bin/env python
 import argparse
 import json
 import os
 import requests
 from dotenv import load_dotenv
 import ckanapi
-
 load_dotenv()
+
+"""
+Description of the file/module.
+
+Args:
+    arg1 (string): name of the package
+    arg2 (dict): metafields that you want to update/remove in this format: '{"Update":{"notes":"modifyingstuff"}, "Remove":{"title"}}'
+    arg3 (dict): resources and metafields that you want to update in this format: '{"resource_1":{"name":"new_name"}}
+Returns:
+    type: Description of the return value(s).
+"""
 
 MY_API_KEY = os.getenv("API_KEY")
 HEADERS = {
     'Authorization': MY_API_KEY
 }
 
-# If the package name exists, then this function will return the package ID as well as its resource's names and IDs 
 def get_package_data(name):
+    """Return the id and a dictionary of resources and their ids by traversing the site.
+    
+    Args:
+        name: name of the package
+    """
     ckan = ckanapi.RemoteCKAN('http://data.buspark.io', apikey=MY_API_KEY)
     packages = ckan.action.current_package_list_with_resources()
     
@@ -37,6 +52,14 @@ def get_package_data(name):
 
         
 def package_revise(package_id, resources, update_metafields, resource_updates):
+    """Attempts to create a data dictionary to pass into package_revise CKAN API call.
+    
+    Args:
+        package_id: id of the package (string)
+        resources: the package's resources (dict)
+        update_metafields: metafields to be updated or removed (dict)
+        resource_updates: resources and resource metafields to be removed (dict)
+    """
     print(update_metafields)
     data_dict = {}
     data_dict['match'] = f'{{"id": "{package_id}"}}'
@@ -63,6 +86,11 @@ def package_revise(package_id, resources, update_metafields, resource_updates):
 
 
 def dictionary(a):
+    """Validates user input, returns error if input is invalid json string format
+    
+    Args:
+        a: user input in json string format
+    """
     try:
         data = json.loads(a)
         return data
@@ -93,16 +121,16 @@ parser.add_argument(
 )
 
 args = parser.parse_args()
+
+# Grabbing user inputs
+
 package_name = args.package_name
 update = args.update_metafields
 resources = args.resources
 print(resources)
 
-#now we have the ID and the Resources
 package_id, resource_list = get_package_data(package_name)
-#insert the package_id and resource_list into our function
 data_dict = package_revise(package_id, resource_list, update, resources)
-#make API call
 REVISE_URL = 'http://data.buspark.io/api/3/action/package_revise'
 response = requests.post(REVISE_URL, data=data_dict, headers=HEADERS)
 response_dict = response.json()
