@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 import argparse
 import json
 import os
@@ -9,13 +8,15 @@ load_dotenv()
 
 """
 Description of the file/module.
-
+Notes: resources that aren't mentioned should be removed (not purged!)
 Args:
     arg1 (string): name of the package
     arg2 (dict): metafields that you want to update/remove in this format: '{"Update":{"notes":"modifyingstuff"}, "Remove":{"title"}}'
     arg3 (dict): resources and metafields that you want to update in this format: '{"resource_1":{"name":"new_name"}}
 Returns:
     type: Description of the return value(s).
+Example:
+    python3 test.py "risk_evaluator" '{"Update":{"notes":"modifyingstuff"}}' '{}'
 """
 
 MY_API_KEY = os.getenv("API_KEY")
@@ -60,7 +61,7 @@ def package_revise(package_id, resources, update_metafields, resource_updates):
         update_metafields: metafields to be updated or removed (dict)
         resource_updates: resources and resource metafields to be removed (dict)
     """
-    print(update_metafields)
+    #print(update_metafields) debugging
     data_dict = {}
     data_dict['match'] = f'{{"id": "{package_id}"}}'
     
@@ -80,7 +81,6 @@ def package_revise(package_id, resources, update_metafields, resource_updates):
                 resource_id = resources[name]
                 index = 'update__resources__'  + resource_id[0:6]
                 data_dict[index] = json.dumps(data)
-    
     print(data_dict)
     return data_dict
 
@@ -134,4 +134,6 @@ data_dict = package_revise(package_id, resource_list, update, resources)
 REVISE_URL = 'http://data.buspark.io/api/3/action/package_revise'
 response = requests.post(REVISE_URL, data=data_dict, headers=HEADERS)
 response_dict = response.json()
-print(response_dict)
+json_pretty = json.dumps(response_dict, indent=2)
+print(json_pretty)
+#pretty printing - built in python function
