@@ -4,12 +4,11 @@ import sys
 import os
 import json
 from dotenv import load_dotenv
-
 load_dotenv()
-my_API_KEY = os.getenv("API_KEY")
+
+MY_API_KEY = os.getenv("API_KEY")
 
 dsCreator = 'riskEvaluator.json'
-APIKEY = my_API_KEY
 #read JSON file 
 
 f = open(os.path.join(sys.path[0],'jsonf',dsCreator))
@@ -21,7 +20,7 @@ package_src_url = data['url']
 package_rf = data['resourceFolder']
 package_org = data['owner_org']
 
-ckan = ckanapi.RemoteCKAN('http://data.buspark.io', apikey=APIKEY)
+ckan = ckanapi.RemoteCKAN('http://data.buspark.io', apikey=MY_API_KEY)
 
 # This follows the example provided in ckanapi repo: Create the "Sample" dataset.
 try:
@@ -48,7 +47,7 @@ for filename in os.listdir(os.path.join(sys.path[0],package_rf)):
                             'format': extension,
                             'url': 'upload',  # Needed to pass validation
                             },
-                      headers={'Authorization': APIKEY},
+                      headers={'Authorization': MY_API_KEY},
                       files={"upload": csv_file})
     print(r)
     print(r.json())

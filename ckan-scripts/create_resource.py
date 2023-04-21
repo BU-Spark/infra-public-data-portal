@@ -2,8 +2,8 @@ import requests
 import sys
 import os
 from dotenv import load_dotenv
-
 load_dotenv()
+
 my_API_KEY = os.getenv("API_KEY")
 package_id = 'd874af6c-cd54-4c4a-a05d-504df04e1df2'
 APIKEY = my_API_KEY
