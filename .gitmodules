@@ -1,3 +1,6 @@
 [submodule "ckan-docker/ckan/src/ckanext-spark"]
 	path = ckan-docker/ckan/src/ckanext-spark
 	url = git@github.com:BU-Spark/ckanext-spark.git
+[submodule "ckan-docker/src/ckanext-spark"]
+	path = ckan-docker/src/ckanext-spark
+	url = git@github.com:BU-Spark/ckanext-spark.git
