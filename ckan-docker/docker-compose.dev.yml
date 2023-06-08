@@ -1,11 +1,47 @@
 version: "3"
 
 volumes:
+  # why is storage in docker/containers SOOO hard!??!
   ckan_storage:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /mnt/ckan-data/ckan_storage
   pg_data:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /mnt/ckan-data/pg_data
   solr_data:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /mnt/ckan-data/solr_data
+  nginx_certs:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /mnt/ckan-data/nginx_certs
 
 services:
+
+  nginx:
+    container_name: ${NGINX_CONTAINER_NAME}
+    build:
+      context: nginx/
+      dockerfile: Dockerfile
+    depends_on:
+      ckan-dev:
+        condition: service_healthy
+    volumes:
+      - nginx_certs:/etc/nginx/certs
+    ports:
+      - "0.0.0.0:${NGINX_PORT_HOST}:${NGINX_PORT}"
+      - "0.0.0.0:${NGINX_SSLPORT_HOST}:${NGINX_SSLPORT}"
 
   ckan-dev:
     container_name: ${CKAN_CONTAINER_NAME}
