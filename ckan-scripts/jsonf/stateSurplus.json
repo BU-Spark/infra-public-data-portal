@@ -1,7 +1,7 @@
 {
-	"projectName": "state_surplus_summer21",
+	"project_name": "state_surplus_summer21",
 	"description": "Collecting a record of items of personal property, such as equipment and supplies, for which state agencies no longer have a business use, but that have some reuse value. ",
-	"url" : "https://github.com/BU-Spark/summer2021internship/blob/master/State%20Surplus/parcel-geoData.csv",
-	"resourceFolder": "StateSurplusS21",
+	"more_information" : "https://github.com/BU-Spark/summer2021internship/blob/master/State%20Surplus/parcel-geoData.csv",
+	"uris": "StateSurplusS21",
 	"owner_org": "buspark"
 }
