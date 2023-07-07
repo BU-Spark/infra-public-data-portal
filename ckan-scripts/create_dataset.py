@@ -30,10 +30,13 @@ except ckanapi.ValidationError as e:
             print(package)
         elif 'owner_org' in e.error_dict:
             print(f"Error: {e.error_dict['owner_org'][0]}")
+            sys.exit(1)  # Exit the script if 'owner_org' validation error occurs
+        else:
+            print(f'Error: {e}')
     else:
-        raise
-print('------------------------------------')
-print(package['id'])
+        print(f'Error: {e}')
+else:
+    print('Package created successfully')
 
 for filename in os.listdir(os.path.join(sys.path[0],package_uris)):
     csv_file = open(os.path.join(sys.path[0],package_uris,filename), "rb")
@@ -42,7 +45,7 @@ for filename in os.listdir(os.path.join(sys.path[0],package_uris)):
     resource_name = filename[0:-4] 
     print('Creating "{resource_name}" resource'.format(**locals()))
     r = requests.post('http://data.buspark.io/api/3/action/resource_create',
-                      data={'package_id': package['id'],
+                      data={'package_id': package['name'],
                             'name': resource_name,
                             'format': extension,
                             'url': 'upload',  
