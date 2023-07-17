@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import ckanapi
 import requests
 import sys
