@@ -1,4 +1,11 @@
 #!/usr/bin/env python
+
+"""
+The purpose of this script is to take in the json file produced by compile_json.py and upload all of the projects to our 
+Data@Spark website.
+
+Again, only works for data stored in GitHub repos, as it depends on the raw.githubusercontent links for the data
+"""
 import ckanapi
 import requests
 import sys
@@ -7,7 +14,7 @@ import json
 from io import BytesIO
 
 # env variable in the future
-MY_API_KEY = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJtbV9qVFdxQjNJT1hWNVhERUxzRVk1YXFtT2lzbzJ0ZmxySFlmbHJyaGpvIiwiaWF0IjoxNjg2MjM3NzY5fQ.HfIeTLEBB4bXXiLMVRIwWcSDUB_U7XYV93cvpNtvTVU'
+MY_API_KEY = os.getenv("API_KEY")
 
 all_projects = 'spark_datasets_2023-08-10.json'
 
