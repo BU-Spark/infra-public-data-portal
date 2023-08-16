@@ -33,11 +33,10 @@ Example:
 ```
 
 # Use
-Creating and Uploading a Package:
-- Create a json file for the package following the directions above
-- Create a folder and drop the package's resources (if any) in it
-- Navigate to create_dataset.py and change the value of dsCreator to the name of the json file.
-- Run the file!
+Creating packages:
+- Download csv of Google Form responses
+- Generate JSON using this csv file using compile_jsons.py
+- Run create_dataset.py which uses the generated JSON file
 
 Updating a Package: 
 - Give package_update.py permission to be an executable
