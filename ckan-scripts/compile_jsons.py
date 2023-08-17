@@ -2,7 +2,7 @@
 The purpose of this script is to take in the spreadsheet with responses to the gform, 
 and create a JSON file with all the required metadata fields to be passed to create_datasets.py
 
-Currently only works for data stored in a GitHub repo, in the future should try to extend to Google Drive Folders
+Currently only works for data stored in a GitHub repo or Google Drive
 
 Note: manually reads in csv using pandas
 """
@@ -22,6 +22,14 @@ def is_valid_url(url):
     except ValueError:
         return False
     
+def link_transformation(x):
+    if is_valid_url(x) and pd.notna(x):
+        if x.startswith('https://github.com/'):
+            return get_raw_urls(x)  # Assuming this function processes GitHub URLs
+        elif x.startswith('https://drive.google.com/'):
+            return [x]  # Return the Google Drive link in a list
+    return [None]
+
 def get_raw_urls(repo_url):
     # Extract the username, repository name, and path from the URL
     parts = repo_url.split("/")
@@ -46,7 +54,7 @@ def get_raw_urls(repo_url):
 
 
 # read in csv manually  for now
-df = pd.read_csv('sheet.csv')
+df = pd.read_csv('FINALDATAATSPARKTEST.csv')
 
 # Rename columns, based on form in August 2023
 df.rename({'What is the project name?': 'project_name',
@@ -67,7 +75,8 @@ regex = re.compile('[^a-zA-Z0-9_]')
 df['project_name'] = df['project_name'].apply(lambda x: regex.sub('', x).lower())
 
 # Get raw github urls
-df['uris'] = df['uris'].apply(lambda x: get_raw_urls(x) if is_valid_url(x) and pd.notna(x) else [None])
+# df['uris'] = df['uris'].apply(lambda x: get_raw_urls(x) if is_valid_url(x) and pd.notna(x) else [None])
+df['uris'] = df['uris'].apply(link_transformation)
 
 
 # save as JSON file
