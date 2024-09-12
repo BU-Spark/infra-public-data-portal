@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yml
+    kompose.version: 1.32.0 (765fde254)
+  labels:
+    io.kompose.service: datapusher
+  name: datapusher
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: datapusher
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml
+        kompose.version: 1.32.0 (765fde254)
+      labels:
+        io.kompose.network/ckan-default: "true"
+        io.kompose.service: datapusher
+    spec:
+      containers:
+        - image: ckan/ckan-base-datapusher:0.0.19
+          livenessProbe:
+            exec:
+              command:
+                - wget
+                - -qO
+                - /dev/null
+                - http://localhost:8800
+          name: datapusher
+          ports:
+            - containerPort: 8800
+              hostPort: 8800
+              protocol: TCP
+      restartPolicy: Always

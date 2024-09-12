@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yml
+    kompose.version: 1.32.0 (765fde254)
+  labels:
+    io.kompose.service: nginx
+  name: nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: nginx
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml
+        kompose.version: 1.32.0 (765fde254)
+      labels:
+        io.kompose.network/ckan-default: "true"
+        io.kompose.service: nginx
+    spec:
+      containers:
+        - image: nginx
+          name: nginx
+          ports:
+            - containerPort: 80
+              hostIP: 0.0.0.0
+              hostPort: 81
+              protocol: TCP
+            - containerPort: 443
+              hostIP: 0.0.0.0
+              hostPort: 8443
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /etc/nginx/certs
+              name: nginx-certs
+      restartPolicy: Always
+      volumes:
+        - name: nginx-certs
+          persistentVolumeClaim:
+            claimName: nginx-certs
