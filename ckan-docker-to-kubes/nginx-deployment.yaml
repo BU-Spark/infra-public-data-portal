@@ -2,8 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    kompose.cmd: kompose convert -f docker-compose.yml
-    kompose.version: 1.32.0 (765fde254)
+    kompose.cmd: kompose convert -f docker-compose.dev.yml -o ../ckan-docker-to-kubes/
+    kompose.version: 1.36.0 (ae2a39403)
   labels:
     io.kompose.service: nginx
   name: nginx
@@ -17,29 +17,34 @@ spec:
   template:
     metadata:
       annotations:
-        kompose.cmd: kompose convert -f docker-compose.yml
-        kompose.version: 1.32.0 (765fde254)
+        kompose.cmd: kompose convert -f docker-compose.dev.yml -o ../ckan-docker-to-kubes/
+        kompose.version: 1.36.0 (ae2a39403)
       labels:
-        io.kompose.network/ckan-default: "true"
         io.kompose.service: nginx
     spec:
       containers:
         - image: nginx
           name: nginx
           ports:
-            - containerPort: 80
-              hostIP: 0.0.0.0
-              hostPort: 81
+            - containerPort: 8080
               protocol: TCP
             - containerPort: 443
-              hostIP: 0.0.0.0
-              hostPort: 8443
               protocol: TCP
           volumeMounts:
             - mountPath: /etc/nginx/certs
               name: nginx-certs
+            - mountPath: /var/cache/nginx
+              name: nginx-cache
+            - mountPath: /etc/nginx/nginx.conf
+              name: nginx-config
+              subPath: nginx.conf
       restartPolicy: Always
       volumes:
         - name: nginx-certs
           persistentVolumeClaim:
             claimName: nginx-certs
+        - name: nginx-cache
+          emptyDir: {}
+        - name: nginx-config
+          configMap:
+            name: nginx-config

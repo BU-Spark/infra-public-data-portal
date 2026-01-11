@@ -2,8 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    kompose.cmd: kompose convert -f docker-compose.yml
-    kompose.version: 1.32.0 (765fde254)
+    kompose.cmd: kompose convert -f docker-compose.dev.yml -o ../ckan-docker-to-kubes/
+    kompose.version: 1.36.0 (ae2a39403)
   labels:
     io.kompose.service: db
   name: db
@@ -17,21 +17,20 @@ spec:
   template:
     metadata:
       annotations:
-        kompose.cmd: kompose convert -f docker-compose.yml
-        kompose.version: 1.32.0 (765fde254)
+        kompose.cmd: kompose convert -f docker-compose.dev.yml -o ../ckan-docker-to-kubes/
+        kompose.version: 1.36.0 (ae2a39403)
       labels:
-        io.kompose.network/ckan-default: "true"
         io.kompose.service: db
     spec:
       containers:
         - env:
             - name: DATASTORE_READONLY_PASSWORD
-              value: Sparkians
+              value: datastore
             - name: PGDATA
               value: /var/lib/postgresql/data/db
             - name: POSTGRES_PASSWORD
               value: ckan
-          image: db
+          image: postgres:12
           livenessProbe:
             exec:
               command:
@@ -39,10 +38,6 @@ spec:
                 - -U
                 - ckan
           name: db
-          ports:
-            - containerPort: 5432
-              hostPort: 5432
-              protocol: TCP
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
               name: pg-data

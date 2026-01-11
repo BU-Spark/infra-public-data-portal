@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: debug-ckan
+spec:
+  restartPolicy: Never
+  containers:
+  - name: ckan
+    image: quay.io/buspark_test/spark-ckan:latest
+    # override entrypoint so we just sleep
+    command: ["/bin/sh","-c","sleep infinity"]
+    imagePullPolicy: Always
+    envFrom:
+      - configMapRef:
+          name: env
+    volumeMounts:
+      - name: ckan-config
+        mountPath: /srv/app/config
+  volumes:
+  - name: ckan-config
+    emptyDir: {}
+

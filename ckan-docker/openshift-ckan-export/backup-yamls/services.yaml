@@ -1,0 +1,296 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kompose.cmd: kompose convert -f docker-compose.dev.yml -o ../ckan-docker-to-kubes/
+      kompose.version: 1.36.0 (ae2a39403)
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{"kompose.cmd":"kompose convert -f docker-compose.dev.yml -o ../ckan-docker-to-kubes/","kompose.version":"1.36.0 (ae2a39403)"},"labels":{"io.kompose.service":"ckan-dev"},"name":"ckan-dev","namespace":"buspark-test-dev"},"spec":{"ports":[{"name":"5000","port":5000,"targetPort":5000}],"selector":{"io.kompose.service":"ckan-dev"}}}
+    creationTimestamp: "2025-06-25T13:26:23Z"
+    labels:
+      io.kompose.service: ckan-dev
+    name: ckan-dev
+    namespace: buspark-test-dev
+    resourceVersion: "2627667218"
+    uid: 0dffa4a7-cd2e-4a05-b6c1-b054d120b9fb
+  spec:
+    clusterIP: 172.30.57.17
+    clusterIPs:
+    - 172.30.57.17
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - name: "5000"
+      port: 5000
+      protocol: TCP
+      targetPort: 5000
+    selector:
+      io.kompose.service: ckan-dev
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    creationTimestamp: "2025-07-06T14:18:13Z"
+    labels:
+      io.kompose.service: ckan-dev
+    name: ckan-service
+    namespace: buspark-test-dev
+    resourceVersion: "2957811210"
+    uid: 3e2d70a0-95f7-4b6e-91e4-6272dee5033a
+  spec:
+    clusterIP: 172.30.61.146
+    clusterIPs:
+    - 172.30.61.146
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - port: 5000
+      protocol: TCP
+      targetPort: 5000
+    selector:
+      io.kompose.service: ckan-dev
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kompose.cmd: kompose convert -f docker-compose.yml
+      kompose.version: 1.32.0 (765fde254)
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{"kompose.cmd":"kompose convert -f docker-compose.yml","kompose.version":"1.32.0 (765fde254)"},"labels":{"io.kompose.service":"datapusher"},"name":"datapusher","namespace":"buspark-test-dev"},"spec":{"ports":[{"name":"8800","port":8800,"targetPort":8800}],"selector":{"io.kompose.service":"datapusher"}}}
+    creationTimestamp: "2025-06-25T13:25:47Z"
+    labels:
+      io.kompose.service: datapusher
+    name: datapusher
+    namespace: buspark-test-dev
+    resourceVersion: "2627654542"
+    uid: b81db122-a3e4-44f1-a8ef-644d862d9e89
+  spec:
+    clusterIP: 172.30.56.157
+    clusterIPs:
+    - 172.30.56.157
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - name: "8800"
+      port: 8800
+      protocol: TCP
+      targetPort: 8800
+    selector:
+      io.kompose.service: datapusher
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kompose.cmd: kompose convert -f docker-compose.yml
+      kompose.version: 1.32.0 (765fde254)
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{"kompose.cmd":"kompose convert -f docker-compose.yml","kompose.version":"1.32.0 (765fde254)"},"labels":{"io.kompose.service":"db"},"name":"db","namespace":"buspark-test-dev"},"spec":{"ports":[{"name":"5432","port":5432,"targetPort":5432}],"selector":{"io.kompose.service":"db"}}}
+    creationTimestamp: "2025-06-25T13:25:37Z"
+    labels:
+      io.kompose.service: db
+    name: db
+    namespace: buspark-test-dev
+    resourceVersion: "2627651076"
+    uid: 2c6b70c3-ef31-4886-a22b-7f6dbf78c1cd
+  spec:
+    clusterIP: 172.30.138.142
+    clusterIPs:
+    - 172.30.138.142
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - name: "5432"
+      port: 5432
+      protocol: TCP
+      targetPort: 5432
+    selector:
+      io.kompose.service: db
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      service.alpha.openshift.io/serving-cert-secret-name: model-serving-proxy-tls
+      service.alpha.openshift.io/serving-cert-signed-by: openshift-service-serving-signer@1733253833
+      service.beta.openshift.io/serving-cert-signed-by: openshift-service-serving-signer@1733253833
+    creationTimestamp: "2025-06-10T09:49:53Z"
+    labels:
+      app.kubernetes.io/instance: modelmesh-controller
+      app.kubernetes.io/managed-by: modelmesh-controller
+      app.kubernetes.io/name: modelmesh-controller
+      modelmesh-service: modelmesh-serving
+    name: modelmesh-serving
+    namespace: buspark-test-dev
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Namespace
+      name: buspark-test-dev
+      uid: 28350542-012b-41b4-a588-acefa985e4f2
+    resourceVersion: "2428866412"
+    uid: c0f82a3e-1d98-4b13-8c9f-98b2588317ca
+  spec:
+    clusterIP: None
+    clusterIPs:
+    - None
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - name: grpc
+      port: 8033
+      protocol: TCP
+      targetPort: grpc
+    - name: http
+      port: 8008
+      protocol: TCP
+      targetPort: http
+    - name: https
+      port: 8443
+      protocol: TCP
+      targetPort: https
+    - name: prometheus
+      port: 2112
+      protocol: TCP
+      targetPort: prometheus
+    selector:
+      modelmesh-service: modelmesh-serving
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kompose.cmd: kompose convert -f docker-compose.dev.yml -o ../ckan-docker-to-kubes/
+      kompose.version: 1.36.0 (ae2a39403)
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{"kompose.cmd":"kompose convert -f docker-compose.dev.yml -o ../ckan-docker-to-kubes/","kompose.version":"1.36.0 (ae2a39403)"},"labels":{"io.kompose.service":"nginx"},"name":"nginx","namespace":"buspark-test-dev"},"spec":{"ports":[{"name":"81","port":81,"targetPort":80},{"name":"8443","port":8443,"targetPort":443}],"selector":{"io.kompose.service":"nginx"}}}
+    creationTimestamp: "2025-06-25T13:25:50Z"
+    labels:
+      io.kompose.service: nginx
+    name: nginx
+    namespace: buspark-test-dev
+    resourceVersion: "2958615710"
+    uid: 0e48bef1-e3e3-40c0-99ba-9adb2be52665
+  spec:
+    clusterIP: 172.30.33.65
+    clusterIPs:
+    - 172.30.33.65
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - name: "81"
+      port: 81
+      protocol: TCP
+      targetPort: 8080
+    - name: "8443"
+      port: 8443
+      protocol: TCP
+      targetPort: 443
+    selector:
+      io.kompose.service: nginx
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kompose.cmd: kompose convert -f docker-compose.yml
+      kompose.version: 1.32.0 (765fde254)
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{"kompose.cmd":"kompose convert -f docker-compose.yml","kompose.version":"1.32.0 (765fde254)"},"labels":{"io.kompose.service":"redis"},"name":"redis","namespace":"buspark-test-dev"},"spec":{"ports":[{"name":"6379","port":6379,"targetPort":6379}],"selector":{"io.kompose.service":"redis"}}}
+    creationTimestamp: "2025-06-25T13:25:43Z"
+    labels:
+      io.kompose.service: redis
+    name: redis
+    namespace: buspark-test-dev
+    resourceVersion: "2627653401"
+    uid: 9b999a48-a494-4d8e-85cb-539a9ba15e63
+  spec:
+    clusterIP: 172.30.213.123
+    clusterIPs:
+    - 172.30.213.123
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - name: "6379"
+      port: 6379
+      protocol: TCP
+      targetPort: 6379
+    selector:
+      io.kompose.service: redis
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kompose.cmd: kompose convert -f docker-compose.yml
+      kompose.version: 1.32.0 (765fde254)
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{"kompose.cmd":"kompose convert -f docker-compose.yml","kompose.version":"1.32.0 (765fde254)"},"labels":{"io.kompose.service":"solr"},"name":"solr","namespace":"buspark-test-dev"},"spec":{"ports":[{"name":"8983","port":8983,"targetPort":8983}],"selector":{"io.kompose.service":"solr"}}}
+    creationTimestamp: "2025-06-25T13:25:40Z"
+    labels:
+      io.kompose.service: solr
+    name: solr
+    namespace: buspark-test-dev
+    resourceVersion: "2627652231"
+    uid: 732d63fe-cce5-4df4-8b3d-fa5173c8fd74
+  spec:
+    clusterIP: 172.30.255.78
+    clusterIPs:
+    - 172.30.255.78
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - name: "8983"
+      port: 8983
+      protocol: TCP
+      targetPort: 8983
+    selector:
+      io.kompose.service: solr
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+kind: List
+metadata:
+  resourceVersion: ""

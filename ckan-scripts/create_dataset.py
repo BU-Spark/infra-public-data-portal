@@ -20,7 +20,7 @@ package_src_url = data['url']
 package_rf = data['resourceFolder']
 package_org = data['owner_org']
 
-ckan = ckanapi.RemoteCKAN('http://data.buspark.io', apikey=MY_API_KEY)
+ckan = ckanapi.RemoteCKAN('http://ckan-spark-infra-105732.apps.shift.nerc.mghpcc.org', apikey=MY_API_KEY)
 
 # This follows the example provided in ckanapi repo: Create the "Sample" dataset.
 try:
@@ -41,7 +41,7 @@ for filename in os.listdir(os.path.join(sys.path[0],package_rf)):
     extension = os.path.splitext(filename)[1][1:].upper()
     resource_name = filename[0:-4] #remove extension from resource name
     print('Creating "{resource_name}" resource'.format(**locals()))
-    r = requests.post('http://data.buspark.io/api/3/action/resource_create',
+    r = requests.post('http://ckan-spark-infra-105732.apps.shift.nerc.mghpcc.org/api/3/action/resource_create',
                       data={'package_id': package['id'],
                             'name': resource_name,
                             'format': extension,

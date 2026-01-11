@@ -1,0 +1,24 @@
+[
+  {
+    "op": "add",
+    "path": "/spec/template/spec/containers/0/readinessProbe",
+    "value": {
+      "httpGet": {
+        "path": "/api/3/action/status_show",
+        "port": 5000,
+        "scheme": "HTTP"
+      },
+      "initialDelaySeconds": 30,
+      "periodSeconds": 10,
+      "timeoutSeconds": 2,
+      "failureThreshold": 3,
+      "successThreshold": 1
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/spec/template/spec/containers/0/livenessProbe/initialDelaySeconds",
+    "value": 60
+  }
+]
+

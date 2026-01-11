@@ -30,3 +30,81 @@ Deleting a Package:
 
 Notes:
 There are additional scripts that provide helpful information. org_id.py returns the organization ID which is requried in some api calls. traverse_site.py returns all the packages and their resources within your organization. Feel free to make your own individual functions that perform simple tasks well and incorporate them into the larger scripts eg. a function that deletes a resource. 
+
+
+## CKAN Deployment Next Step Notes
+
+This deployment includes several non-obvious configuration requirements.
+If any of the items below are misconfigured, the portal may appear to work partially
+(for example internal service access succeeds) while public access, login,
+API calls, or extensions fail.
+
+---
+
+### 1. Canonical Site URL (CKAN_SITE_URL)
+
+CKAN is very sensitive to its canonical site URL.
+If this value does not exactly match the externally accessible OpenShift Route,
+CKAN will redirect users to a non-functional endpoint during login,
+registration, or API usage.
+
+Requirements:
+- CKAN_SITE_URL must match the public OpenShift Route hostname exactly
+- Do not use internal service names such as ckan, ckan-service, or pod IPs
+
+Example configuration:
+
+    CKAN_SITE_URL: http://ckan-spark-infra-105732.apps.shift.nerc.mghpcc.org
+
+After updating CKAN_SITE_URL, the CKAN pod must be restarted for the change
+to take effect.
+
+---
+
+### 2. HTTP vs HTTPS (Ingress / Route Behavior)
+
+This deployment currently exposes CKAN over HTTP only.
+
+Key points:
+- The OpenShift Route does not have TLS termination configured
+- HTTPS requests will fail even though the hostname resolves
+- Browsers, scripts, and API clients must use http://
+
+If HTTPS is required:
+- TLS termination must be configured on the OpenShift Route
+- CKAN_SITE_URL must be updated to use https://
+
+Until TLS is configured, do not use HTTPS URLs.
+
+---
+
+### 3. CKAN Extension: ckanext-spark
+
+The custom CKAN extension ckanext-spark is baked into the CKAN image at build time.
+
+Installation details:
+- The extension is cloned into /srv/app/src_extensions/ckanext-spark
+- Installed using pip install -e .
+- Any Python dependencies in requirements.txt are installed during the image build
+
+To enable the extension, it must be added to the CKAN plugins list.
+
+Example:
+
+    CKAN__PLUGINS: envvars image_view text_view recline_view datastore spark
+
+After updating CKAN__PLUGINS:
+- Restart the CKAN deployment
+- Verify plugin load in CKAN startup logs
+
+---
+
+### Verification Checklist
+
+After deployment or image updates, verify the following:
+
+- CKAN homepage loads at the public Route using HTTP
+- User login and registration do not redirect to internal service URLs
+- API requests succeed at /api/3/action/*
+- ckanext-spark appears in CKAN logs as loaded
+- Dataset creation via API or UI works without authorization errors

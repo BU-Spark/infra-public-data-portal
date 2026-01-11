@@ -1,39 +1,56 @@
-#!/bin/bash
+#!/bin/sh
+set -e
 
-# Run the prerun script to init CKAN and create the default admin user
-sudo -u ckan -EH python3 prerun.py
+CONFIG_FILE=${CKAN_INI:-/srv/app/config/ckan.ini}
 
-# Run any startup scripts provided by images extending this one
-if [[ -d "/docker-entrypoint.d" ]]
-then
-    for f in /docker-entrypoint.d/*; do
-        case "$f" in
-            *.sh)     echo "$0: Running init file $f"; . "$f" ;;
-            *.py)     echo "$0: Running init file $f"; python3 "$f"; echo ;;
-            *)        echo "$0: Ignoring $f (not an sh or py file)" ;;
-        esac
-        echo
-    done
+# 1) Generate ckan.ini if missing
+if [ ! -f "$CONFIG_FILE" ]; then
+  echo "[start_ckan.sh] Generating ckan.ini..."
+  ckan generate config "$CONFIG_FILE" || {
+    echo "[start_ckan.sh] Failed to generate config"
+    exit 1
+  }
 fi
 
-# Set the common uwsgi options
+# 2) Initialize CKAN (DB, sysadmin user, plugins, etc.)
+echo "[start_ckan.sh] Running prerun.py..."
+python3 /srv/app/prerun.py || echo "[start_ckan.sh] prerun.py failed, continuing..."
+
+# 3) Run any additional init scripts
+if [ -d "/docker-entrypoint.d" ]; then
+  for f in /docker-entrypoint.d/*; do
+    case "$f" in
+      *.sh)
+        echo "[start_ckan.sh] Running init file $f"
+        . "$f"
+        ;;
+      *.py)
+        echo "[start_ckan.sh] Running init file $f"
+        python3 "$f"
+        ;;
+      *)
+        echo "[start_ckan.sh] Ignoring $f (not an sh or py file)"
+        ;;
+    esac
+  done
+fi
+
+# 4) uWSGI options
 UWSGI_OPTS="--plugins http,python \
-            --socket /tmp/uwsgi.sock \
-            --wsgi-file /srv/app/wsgi.py \
-            --module wsgi:application \
-            --uid 92 --gid 92 \
-            --http 0.0.0.0:5000 \
-            --master --enable-threads \
-            --lazy-apps \
-            -p 2 -L -b 32768 --vacuum \
-            --harakiri $UWSGI_HARAKIRI"
+--socket /tmp/uwsgi.sock \
+--wsgi-file /srv/app/wsgi.py \
+--module wsgi:application \
+--http 0.0.0.0:${CKAN_PORT:-5000} \
+--master --enable-threads \
+--lazy-apps \
+-p ${UWSGI_PROCESSES:-2} \
+-L -b 32768 --vacuum \
+--harakiri ${UWSGI_HARAKIRI:-60}"
 
-if [ $? -eq 0 ]
-then
-    # Start supervisord
-    supervisord --configuration /etc/supervisord.conf &
-    # Start uwsgi
-    sudo -u ckan -EH uwsgi $UWSGI_OPTS
-else
-  echo "[prerun] failed...not starting CKAN."
-fi
+echo "[start_ckan.sh] Starting supervisord and uWSGI..."
+
+# 5) Launch supervisord in the foreground (it will daemonize uWSGI)
+exec supervisord --nodaemon --configuration /etc/supervisord.conf &
+
+# 6) Replace this shell with uWSGI
+exec uwsgi $UWSGI_OPTS

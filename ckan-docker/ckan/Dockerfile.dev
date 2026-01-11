@@ -1,58 +1,83 @@
+# Dockerfile.dev
 FROM ckan/ckan-base:ckan-2.10.0-dev
 
+# 1) Environment
+ENV APP_DIR=/srv/app \
+    CKAN_SRC=/usr/lib/ckan/default/src/ckan \
+    TZ=UTC \
+    CKAN_INI=${APP_DIR}/config/ckan.ini
 
-# Set up environment variables
-ENV APP_DIR=/srv/app
-ENV TZ=UTC
-RUN echo ${TZ} > /etc/timezone
+# 2) Timezone (optional)
+RUN echo "${TZ}" > /etc/timezone \
+ && cp /usr/share/zoneinfo/${TZ} /etc/localtime || true
 
-# Make sure both files are not exactly the same
-RUN if ! [ /usr/share/zoneinfo/${TZ} -ef /etc/localtime ]; then \
-        cp /usr/share/zoneinfo/${TZ} /etc/localtime ;\
-    fi ;
+# 3) Prepare directories & permissions
+USER root
+RUN mkdir -p \
+      ${APP_DIR}/config \
+      ${CKAN_SRC}/ckan/public/base/i18n \
+ && chmod -R a+rwX ${APP_DIR} \
+ && chmod -R a+rwX ${CKAN_SRC}/ckan/public/base/i18n \
+ && chmod -R a+rX ${APP_DIR}
 
-# Install any extensions needed by your CKAN instance
-# - Make sure to add the plugins to CKAN__PLUGINS in the .env file
-# - Also make sure all extra configuration options are added to the CKAN config file (ckan.ini)
-#   This can be done by creating an overriding start_ckan_dev_development.sh file:
-#   (https://github.com/ckan/ckan-docker-base/blob/main/ckan-2.9/dev/setup/start_ckan_development.sh) ie: updating the 'ckan config-tool' lines
-#   For more on config-tool please see https://docs.ckan.org/en/latest/maintaining/cli.html#config-tool-tool-for-editing-options-in-a-ckan-config-file
-#   or using Crudini (https://github.com/pixelb/crudini) 
-#
-# For instance:
-#
-### XLoader ###
-#RUN pip3 install -e 'git+https://github.com/ckan/ckanext-xloader.git@master#egg=ckanext-xloader' && \ 
-#    pip3 install -r ${APP_DIR}/src/ckanext-xloader/requirements.txt && \
-#    pip3 install -U requests[security]
+# 4) Override supervisord.conf, then remove any chown directive
+COPY setup/supervisord.conf /etc/supervisord.conf
+RUN sed -i '/^chown\s*=/d' /etc/supervisord.conf \
+ && rm -f /etc/supervisord.d/*.conf
 
-### Harvester ###
-#RUN pip3 install -e 'git+https://github.com/ckan/ckanext-harvest.git@master#egg=ckanext-harvest' && \
-#    pip3 install -r ${APP_DIR}/src/ckanext-harvest/pip-requirements.txt
-# will also require gather_consumer and fetch_consumer processes running (please see https://github.com/ckan/ckanext-harvest)
+# 5) Copy in your entry-point scripts
+COPY setup/start_ckan.sh ${APP_DIR}/start_ckan.sh
+COPY setup/prerun.py     ${APP_DIR}/prerun.py
+RUN chmod +x ${APP_DIR}/start_ckan.sh
 
-### Scheming ###
-#RUN  pip3 install -e 'git+https://github.com/ckan/ckanext-scheming.git@master#egg=ckanext-scheming'
-
-### Pages ###
-#RUN  pip3 install -e git+https://github.com/ckan/ckanext-pages.git#egg=ckanext-pages
-
-### DCAT ###
-#RUN  pip3 install -e git+https://github.com/ckan/ckanext-dcat.git@v0.0.6#egg=ckanext-dcat && \
-#     pip3 install -r https://raw.githubusercontent.com/ckan/ckanext-dcat/v0.0.6/requirements.txt
-
-# Clone the extension(s) your are writing for your own project in the `src` folder
-# to get them mounted in this image at runtime
-
-# Apply any patches needed to CKAN core or any of the built extensions (not the
-# runtime mounted ones)
-
+# 6) Apply any extension patches as CKAN user (safe if empty)
 COPY patches ${APP_DIR}/patches
 
-RUN for d in $APP_DIR/patches/*; do \
-        if [ -d $d ]; then \
-            for f in `ls $d/*.patch | sort -g`; do \
-                cd $SRC_DIR/`basename "$d"` && echo "$0: Applying patch $f to $SRC_DIR/`basename $d`"; patch -p1 < "$f" ; \
-            done ; \
-        fi ; \
-    done
+# ensure patch exists (no-op if already installed)
+USER root
+RUN apt-get update && apt-get install -y patch && rm -rf /var/lib/apt/lists/* || true
+RUN apk add --no-cache patch || true
+
+USER 900
+RUN if [ -d "${APP_DIR}/patches" ] && [ "$(ls -A ${APP_DIR}/patches 2>/dev/null)" ]; then \
+      for d in ${APP_DIR}/patches/*; do \
+        if [ -d "$d" ]; then \
+          for p in "$d"/*.patch; do \
+            if [ -f "$p" ]; then \
+              cd ${CKAN_SRC}/$(basename "$d") && patch -p1 < "$p" || true; \
+            fi; \
+          done; \
+        fi; \
+      done; \
+    else \
+      echo "[Dockerfile] No patches to apply"; \
+    fi
+
+# 7) Final sweep: ensure APP_DIR is world-readable
+USER root
+RUN chmod -R a+rwX ${APP_DIR}
+
+# Install ckanext-spark
+USER root
+
+# Ensure git exists (keep the one that matches your base image)
+RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/* || true
+RUN apk add --no-cache git || true
+
+# Put extensions under /srv/app/src_extensions
+RUN mkdir -p /srv/app/src_extensions
+
+# Pin to a commit or tag if you can
+ARG SPARK_EXT_REF=main
+
+RUN git clone https://github.com/BU-Spark/ckanext-spark.git /srv/app/src_extensions/ckanext-spark \
+ && cd /srv/app/src_extensions/ckanext-spark \
+ && git checkout ${SPARK_EXT_REF} \
+ && pip install -e . \
+ && if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+
+# 8) Run your wrapper as PID 1
+ENTRYPOINT ["/bin/sh", "/srv/app/start_ckan.sh"]
+
+

@@ -1,0 +1,68 @@
+apiVersion: v1
+items:
+- apiVersion: route.openshift.io/v1
+  kind: Route
+  metadata:
+    annotations:
+      openshift.io/host.generated: "true"
+    creationTimestamp: "2025-06-25T09:30:41Z"
+    labels:
+      io.kompose.service: ckan-dev
+      pod-template-hash: 5d54478c9c
+    name: ckan-service
+    namespace: buspark-test-dev
+    resourceVersion: "2622720122"
+    uid: d23744eb-cefc-4304-8961-5463c220f55a
+  spec:
+    host: ckan-service-buspark-test-dev.apps.rm3.7wse.p1.openshiftapps.com
+    port:
+      targetPort: 5000
+    to:
+      kind: Service
+      name: ckan-service
+      weight: 100
+    wildcardPolicy: None
+  status:
+    ingress:
+    - conditions:
+      - lastTransitionTime: "2025-06-25T09:30:41Z"
+        status: "True"
+        type: Admitted
+      host: ckan-service-buspark-test-dev.apps.rm3.7wse.p1.openshiftapps.com
+      routerCanonicalHostname: router-default.apps.rm3.7wse.p1.openshiftapps.com
+      routerName: default
+      wildcardPolicy: None
+- apiVersion: route.openshift.io/v1
+  kind: Route
+  metadata:
+    annotations:
+      openshift.io/host.generated: "true"
+    creationTimestamp: "2025-07-06T08:52:17Z"
+    labels:
+      io.kompose.service: nginx
+    name: nginx
+    namespace: buspark-test-dev
+    resourceVersion: "2951128424"
+    uid: ace633c3-9f1c-455b-bb30-b8aa04031870
+  spec:
+    host: nginx-buspark-test-dev.apps.rm3.7wse.p1.openshiftapps.com
+    port:
+      targetPort: 81
+    to:
+      kind: Service
+      name: nginx
+      weight: 100
+    wildcardPolicy: None
+  status:
+    ingress:
+    - conditions:
+      - lastTransitionTime: "2025-07-06T08:52:17Z"
+        status: "True"
+        type: Admitted
+      host: nginx-buspark-test-dev.apps.rm3.7wse.p1.openshiftapps.com
+      routerCanonicalHostname: router-default.apps.rm3.7wse.p1.openshiftapps.com
+      routerName: default
+      wildcardPolicy: None
+kind: List
+metadata:
+  resourceVersion: ""

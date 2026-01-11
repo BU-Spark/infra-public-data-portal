@@ -1,0 +1,1185 @@
+[start_ckan.sh] Running prerun.py...
+connection to server at "db" (172.30.138.142), port 5432 failed: FATAL:  database "ckan" does not exist
+
+[prerun] Unable to connect to the database, waiting...
+connection to server at "db" (172.30.138.142), port 5432 failed: FATAL:  database "ckan" does not exist
+
+[prerun] Unable to connect to the database, waiting...
+connection to server at "db" (172.30.138.142), port 5432 failed: FATAL:  database "ckan" does not exist
+
+[prerun] Unable to connect to the database, waiting...
+connection to server at "db" (172.30.138.142), port 5432 failed: FATAL:  database "ckan" does not exist
+
+[prerun] Unable to connect to the database, waiting...
+connection to server at "db" (172.30.138.142), port 5432 failed: FATAL:  database "ckan" does not exist
+
+[prerun] Unable to connect to the database, waiting...
+[prerun] Giving up after 5 tries...
+[start_ckan.sh] prerun.py failed, continuing...
+[start_ckan.sh] Ignoring /docker-entrypoint.d/* (not an sh or py file)
+[start_ckan.sh] Starting supervisord and uWSGI...
+*** Starting uWSGI 2.0.20 (64bit) on [Thu Nov 13 16:03:31 2025] ***
+compiled with version: 11.2.1 20220219 on 21 December 2021 13:20:05
+os: Linux-5.14.0-570.35.1.el9_6.x86_64 #1 SMP PREEMPT_DYNAMIC Sat Aug 9 04:12:43 EDT 2025
+nodename: ckan-dev-58cb899ccf-cznzx
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 40
+current working directory: /srv/app
+detected binary path: /usr/sbin/uwsgi
+your processes number limit is 1048576
+your memory page size is 4096 bytes
+ *** WARNING: you have enabled harakiri without post buffering. Slow upload could be rejected on post-unbuffered webservers *** 
+detected max file descriptor number: 1048576
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uWSGI http bound on 0.0.0.0:5000 fd 3
+uwsgi socket 0 bound to UNIX address /tmp/uwsgi.sock fd 6
+Python version: 3.10.10 (main, Feb  9 2023, 02:08:34) [GCC 11.2.1 20220219]
+Python main interpreter initialized at 0x7f3698aadb50
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 304776 bytes (297 KB) for 2 cores
+*** Operational MODE: preforking ***
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 1)
+spawned uWSGI worker 1 (pid: 9, cores: 1)
+spawned uWSGI worker 2 (pid: 10, cores: 1)
+spawned uWSGI http 1 (pid: 11)
+2025-11-13 16:03:32,103 WARN No file matches via include "/etc/supervisord.d/*.conf"
+2025-11-13 16:03:32,107 INFO RPC interface 'supervisor' initialized
+2025-11-13 16:03:32,107 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2025-11-13 16:03:32,107 INFO supervisord started with pid 8
+2025-11-13 16:03:32,975 INFO  [ckan.config.environment] Loading static files from public
+2025-11-13 16:03:32,975 INFO  [ckan.config.environment] Loading static files from public
+2025-11-13 16:03:33,501 INFO  [ckan.config.environment] Loading templates from /srv/app/src/ckan/ckan/templates
+2025-11-13 16:03:33,506 INFO  [ckan.config.environment] Loading templates from /srv/app/src/ckan/ckan/templates
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3361, in _wrap_pool_connect
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3361, in _wrap_pool_connect
+    return fn()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 320, in connect
+    return fn()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 320, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 884, in _checkout
+    return _ConnectionFairy._checkout(self)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 884, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 486, in checkout
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 486, in checkout
+    rec = pool._do_get()
+    rec = pool._do_get()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 145, in _do_get
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 145, in _do_get
+    with util.safe_reraise():
+    with util.safe_reraise():
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+    compat.raise_(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+    raise exception
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+    return self._create_connection()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 266, in _create_connection
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 266, in _create_connection
+    return _ConnectionRecord(self)
+    return _ConnectionRecord(self)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 381, in __init__
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 381, in __init__
+    self.__connect()
+    self.__connect()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 677, in __connect
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 677, in __connect
+    with util.safe_reraise():
+    with util.safe_reraise():
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+    compat.raise_(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+    raise exception
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 673, in __connect
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 673, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/create.py", line 578, in connect
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/create.py", line 578, in connect
+    return dialect.connect(*cargs, **cparams)
+    return dialect.connect(*cargs, **cparams)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 598, in connect
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 598, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/usr/lib/python3.10/site-packages/psycopg2/__init__.py", line 122, in connect
+  File "/usr/lib/python3.10/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "db" (172.30.138.142), port 5432 failed: FATAL:  database "ckan" does not exist
+psycopg2.OperationalError: connection to server at "db" (172.30.138.142), port 5432 failed: FATAL:  database "ckan" does not exist
+
+
+
+The above exception was the direct cause of the following exception:
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/srv/app/./wsgi.py", line 20, in <module>
+  File "/srv/app/./wsgi.py", line 20, in <module>
+    application = make_app(config)
+    application = make_app(config)
+  File "/srv/app/src/ckan/ckan/config/middleware/__init__.py", line 27, in make_app
+  File "/srv/app/src/ckan/ckan/config/middleware/__init__.py", line 27, in make_app
+    load_environment(conf)
+    load_environment(conf)
+  File "/srv/app/src/ckan/ckan/config/environment.py", line 69, in load_environment
+  File "/srv/app/src/ckan/ckan/config/environment.py", line 69, in load_environment
+    p.load_all()
+    p.load_all()
+  File "/srv/app/src/ckan/ckan/plugins/core.py", line 220, in load_all
+  File "/srv/app/src/ckan/ckan/plugins/core.py", line 220, in load_all
+    unload_all()
+    unload_all()
+  File "/srv/app/src/ckan/ckan/plugins/core.py", line 270, in unload_all
+  File "/srv/app/src/ckan/ckan/plugins/core.py", line 270, in unload_all
+    unload(*reversed(_PLUGINS))
+    unload(*reversed(_PLUGINS))
+  File "/srv/app/src/ckan/ckan/plugins/core.py", line 302, in unload
+  File "/srv/app/src/ckan/ckan/plugins/core.py", line 302, in unload
+    plugins_update()
+    plugins_update()
+  File "/srv/app/src/ckan/ckan/plugins/core.py", line 212, in plugins_update
+  File "/srv/app/src/ckan/ckan/plugins/core.py", line 212, in plugins_update
+    environment.update_config()
+    environment.update_config()
+  File "/srv/app/src/ckan/ckan/config/environment.py", line 216, in update_config
+  File "/srv/app/src/ckan/ckan/config/environment.py", line 216, in update_config
+    model.init_model(engine)
+    model.init_model(engine)
+  File "/srv/app/src/ckan/ckan/model/__init__.py", line 164, in init_model
+  File "/srv/app/src/ckan/ckan/model/__init__.py", line 164, in init_model
+    Table('alembic_version', meta.metadata, autoload=True)
+    Table('alembic_version', meta.metadata, autoload=True)
+  File "<string>", line 2, in __new__
+  File "<string>", line 2, in __new__
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/deprecations.py", line 309, in warned
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/deprecations.py", line 309, in warned
+    return fn(*args, **kwargs)
+    return fn(*args, **kwargs)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/sql/schema.py", line 616, in __new__
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/sql/schema.py", line 616, in __new__
+    with util.safe_reraise():
+    with util.safe_reraise():
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+    compat.raise_(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+    raise exception
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/sql/schema.py", line 612, in __new__
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/sql/schema.py", line 612, in __new__
+    table._init(name, metadata, *args, **kw)
+    table._init(name, metadata, *args, **kw)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/sql/schema.py", line 687, in _init
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/sql/schema.py", line 687, in _init
+    self._autoload(
+    self._autoload(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/sql/schema.py", line 720, in _autoload
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/sql/schema.py", line 720, in _autoload
+    insp = inspection.inspect(autoload_with)
+    insp = inspection.inspect(autoload_with)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/inspection.py", line 64, in inspect
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/inspection.py", line 64, in inspect
+    ret = reg(subject)
+    ret = reg(subject)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/reflection.py", line 182, in _engine_insp
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/reflection.py", line 182, in _engine_insp
+    return Inspector._construct(Inspector._init_engine, bind)
+    return Inspector._construct(Inspector._init_engine, bind)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/reflection.py", line 117, in _construct
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/reflection.py", line 117, in _construct
+    init(self, bind)
+    init(self, bind)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/reflection.py", line 128, in _init_engine
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/reflection.py", line 128, in _init_engine
+    engine.connect().close()
+    engine.connect().close()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3315, in connect
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3315, in connect
+    return self._connection_cls(self, close_with_result=close_with_result)
+    return self._connection_cls(self, close_with_result=close_with_result)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 96, in __init__
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 96, in __init__
+    else engine.raw_connection()
+    else engine.raw_connection()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3394, in raw_connection
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3394, in raw_connection
+    return self._wrap_pool_connect(self.pool.connect, _connection)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3364, in _wrap_pool_connect
+    return self._wrap_pool_connect(self.pool.connect, _connection)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3364, in _wrap_pool_connect
+    Connection._handle_dbapi_exception_noconnection(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2198, in _handle_dbapi_exception_noconnection
+    Connection._handle_dbapi_exception_noconnection(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2198, in _handle_dbapi_exception_noconnection
+    util.raise_(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    util.raise_(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3361, in _wrap_pool_connect
+    raise exception
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3361, in _wrap_pool_connect
+    return fn()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 320, in connect
+    return fn()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 320, in connect
+    return _ConnectionFairy._checkout(self)
+    return _ConnectionFairy._checkout(self)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 884, in _checkout
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 884, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 486, in checkout
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 486, in checkout
+    rec = pool._do_get()
+    rec = pool._do_get()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 145, in _do_get
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 145, in _do_get
+    with util.safe_reraise():
+    with util.safe_reraise():
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+    compat.raise_(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+    raise exception
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+    return self._create_connection()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 266, in _create_connection
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 266, in _create_connection
+    return _ConnectionRecord(self)
+    return _ConnectionRecord(self)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 381, in __init__
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 381, in __init__
+    self.__connect()
+    self.__connect()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 677, in __connect
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 677, in __connect
+    with util.safe_reraise():
+    with util.safe_reraise():
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+    compat.raise_(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+    raise exception
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 673, in __connect
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 673, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/create.py", line 578, in connect
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/create.py", line 578, in connect
+    return dialect.connect(*cargs, **cparams)
+    return dialect.connect(*cargs, **cparams)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 598, in connect
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 598, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/usr/lib/python3.10/site-packages/psycopg2/__init__.py", line 122, in connect
+  File "/usr/lib/python3.10/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) connection to server at "db" (172.30.138.142), port 5432 failed: FATAL:  database "ckan" does not exist
+
+(Background on this error at: https://sqlalche.me/e/14/e3q8)sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) connection to server at "db" (172.30.138.142), port 5432 failed: FATAL:  database "ckan" does not exist
+
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+
+unable to load app 0 (mountpoint='') (callable not found or import error)
+unable to load app 0 (mountpoint='') (callable not found or import error)
+2025-11-13 16:03:33,551 INFO  [ckan.config.environment] Loading static files from public
+2025-11-13 16:03:33,551 INFO  [ckan.config.environment] Loading static files from public
+2025-11-13 16:03:33,870 INFO  [ckan.config.environment] Loading templates from /srv/app/src/ckan/ckan/templates
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3361, in _wrap_pool_connect
+    return fn()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 320, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 884, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 486, in checkout
+    rec = pool._do_get()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 145, in _do_get
+    with util.safe_reraise():
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 266, in _create_connection
+    return _ConnectionRecord(self)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 381, in __init__
+    self.__connect()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 677, in __connect
+    with util.safe_reraise():
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 673, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/create.py", line 578, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 598, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/usr/lib/python3.10/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "db" (172.30.138.142), port 5432 failed: FATAL:  database "ckan" does not exist
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/srv/app/wsgi.py", line 20, in <module>
+    application = make_app(config)
+  File "/srv/app/src/ckan/ckan/config/middleware/__init__.py", line 27, in make_app
+    load_environment(conf)
+  File "/srv/app/src/ckan/ckan/config/environment.py", line 69, in load_environment
+    p.load_all()
+  File "/srv/app/src/ckan/ckan/plugins/core.py", line 220, in load_all
+    unload_all()
+  File "/srv/app/src/ckan/ckan/plugins/core.py", line 270, in unload_all
+    unload(*reversed(_PLUGINS))
+  File "/srv/app/src/ckan/ckan/plugins/core.py", line 302, in unload
+    plugins_update()
+  File "/srv/app/src/ckan/ckan/plugins/core.py", line 212, in plugins_update
+    environment.update_config()
+  File "/srv/app/src/ckan/ckan/config/environment.py", line 216, in update_config
+    model.init_model(engine)
+  File "/srv/app/src/ckan/ckan/model/__init__.py", line 164, in init_model
+    Table('alembic_version', meta.metadata, autoload=True)
+  File "<string>", line 2, in __new__
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/deprecations.py", line 309, in warned
+    return fn(*args, **kwargs)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/sql/schema.py", line 616, in __new__
+    with util.safe_reraise():
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/sql/schema.py", line 612, in __new__
+    table._init(name, metadata, *args, **kw)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/sql/schema.py", line 687, in _init
+    self._autoload(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/sql/schema.py", line 720, in _autoload
+    insp = inspection.inspect(autoload_with)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/inspection.py", line 64, in inspect
+    ret = reg(subject)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/reflection.py", line 182, in _engine_insp
+    return Inspector._construct(Inspector._init_engine, bind)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/reflection.py", line 117, in _construct
+    init(self, bind)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/reflection.py", line 128, in _init_engine
+    engine.connect().close()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3315, in connect
+2025-11-13 16:03:33,884 INFO  [ckan.config.environment] Loading templates from /srv/app/src/ckan/ckan/templates
+    return self._connection_cls(self, close_with_result=close_with_result)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 96, in __init__
+    else engine.raw_connection()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3394, in raw_connection
+    return self._wrap_pool_connect(self.pool.connect, _connection)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3364, in _wrap_pool_connect
+    Connection._handle_dbapi_exception_noconnection(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2198, in _handle_dbapi_exception_noconnection
+    util.raise_(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3361, in _wrap_pool_connect
+    return fn()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 320, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 884, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 486, in checkout
+    rec = pool._do_get()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 145, in _do_get
+    with util.safe_reraise():
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 266, in _create_connection
+    return _ConnectionRecord(self)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 381, in __init__
+    self.__connect()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 677, in __connect
+    with util.safe_reraise():
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3361, in _wrap_pool_connect
+    compat.raise_(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 673, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/create.py", line 578, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 598, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/usr/lib/python3.10/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) connection to server at "db" (172.30.138.142), port 5432 failed: FATAL:  database "ckan" does not exist
+
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+unable to load app 0 (mountpoint='') (callable not found or import error)
+*** no app loaded. going in full dynamic mode ***
+--- no python application found, check your startup logs for errors ---
+    return fn()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 320, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 884, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 486, in checkout
+    rec = pool._do_get()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 145, in _do_get
+    with util.safe_reraise():
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 266, in _create_connection
+    return _ConnectionRecord(self)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 381, in __init__
+    self.__connect()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 677, in __connect
+    with util.safe_reraise():
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 673, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/create.py", line 578, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 598, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/usr/lib/python3.10/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "db" (172.30.138.142), port 5432 failed: FATAL:  database "ckan" does not exist
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/srv/app/wsgi.py", line 20, in <module>
+    application = make_app(config)
+  File "/srv/app/src/ckan/ckan/config/middleware/__init__.py", line 27, in make_app
+    load_environment(conf)
+  File "/srv/app/src/ckan/ckan/config/environment.py", line 69, in load_environment
+    p.load_all()
+  File "/srv/app/src/ckan/ckan/plugins/core.py", line 220, in load_all
+    unload_all()
+  File "/srv/app/src/ckan/ckan/plugins/core.py", line 270, in unload_all
+    unload(*reversed(_PLUGINS))
+  File "/srv/app/src/ckan/ckan/plugins/core.py", line 302, in unload
+    plugins_update()
+  File "/srv/app/src/ckan/ckan/plugins/core.py", line 212, in plugins_update
+    environment.update_config()
+  File "/srv/app/src/ckan/ckan/config/environment.py", line 216, in update_config
+    model.init_model(engine)
+  File "/srv/app/src/ckan/ckan/model/__init__.py", line 164, in init_model
+    Table('alembic_version', meta.metadata, autoload=True)
+  File "<string>", line 2, in __new__
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/deprecations.py", line 309, in warned
+    return fn(*args, **kwargs)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/sql/schema.py", line 616, in __new__
+    with util.safe_reraise():
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/sql/schema.py", line 612, in __new__
+    table._init(name, metadata, *args, **kw)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/sql/schema.py", line 687, in _init
+    self._autoload(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/sql/schema.py", line 720, in _autoload
+    insp = inspection.inspect(autoload_with)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/inspection.py", line 64, in inspect
+    ret = reg(subject)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/reflection.py", line 182, in _engine_insp
+    return Inspector._construct(Inspector._init_engine, bind)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/reflection.py", line 117, in _construct
+    init(self, bind)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/reflection.py", line 128, in _init_engine
+    engine.connect().close()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3315, in connect
+    return self._connection_cls(self, close_with_result=close_with_result)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 96, in __init__
+    else engine.raw_connection()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3394, in raw_connection
+    return self._wrap_pool_connect(self.pool.connect, _connection)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3364, in _wrap_pool_connect
+    Connection._handle_dbapi_exception_noconnection(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2198, in _handle_dbapi_exception_noconnection
+    util.raise_(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3361, in _wrap_pool_connect
+    return fn()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 320, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 884, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 486, in checkout
+    rec = pool._do_get()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 145, in _do_get
+    with util.safe_reraise():
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 266, in _create_connection
+    return _ConnectionRecord(self)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 381, in __init__
+    self.__connect()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 677, in __connect
+    with util.safe_reraise():
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 673, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/create.py", line 578, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 598, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/usr/lib/python3.10/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) connection to server at "db" (172.30.138.142), port 5432 failed: FATAL:  database "ckan" does not exist
+
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+unable to load app 0 (mountpoint='') (callable not found or import error)
+*** no app loaded. going in full dynamic mode ***
+--- no python application found, check your startup logs for errors ---
+--- no python application found, check your startup logs for errors ---
+--- no python application found, check your startup logs for errors ---
+--- no python application found, check your startup logs for errors ---
+--- no python application found, check your startup logs for errors ---
+--- no python application found, check your startup logs for errors ---
+--- no python application found, check your startup logs for errors ---
+--- no python application found, check your startup logs for errors ---
+--- no python application found, check your startup logs for errors ---
+--- no python application found, check your startup logs for errors ---
+--- no python application found, check your startup logs for errors ---
+gateway "uWSGI http 1" has been buried (pid: 11)
+...brutally killing workers...
+worker 1 buried after 1 seconds
+worker 2 buried after 1 seconds
+binary reloading uWSGI...
+chdir() to /srv/app
+closing all non-uwsgi socket fds > 2 (max_fd = 1048576)...
+found fd 6 mapped to socket 0 (/tmp/uwsgi.sock)
+running /usr/sbin/uwsgi
+*** Starting uWSGI 2.0.20 (64bit) on [Thu Nov 13 16:05:12 2025] ***
+compiled with version: 11.2.1 20220219 on 21 December 2021 13:20:05
+os: Linux-5.14.0-570.35.1.el9_6.x86_64 #1 SMP PREEMPT_DYNAMIC Sat Aug 9 04:12:43 EDT 2025
+nodename: ckan-dev-58cb899ccf-cznzx
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 40
+current working directory: /srv/app
+detected binary path: /usr/sbin/uwsgi
+your processes number limit is 1048576
+your memory page size is 4096 bytes
+ *** WARNING: you have enabled harakiri without post buffering. Slow upload could be rejected on post-unbuffered webservers *** 
+detected max file descriptor number: 1048576
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uWSGI http bound on 0.0.0.0:5000 fd 3
+uwsgi socket 0 inherited UNIX address /tmp/uwsgi.sock fd 6
+Python version: 3.10.10 (main, Feb  9 2023, 02:08:34) [GCC 11.2.1 20220219]
+Python main interpreter initialized at 0x7f35f22bbb50
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 304776 bytes (297 KB) for 2 cores
+*** Operational MODE: preforking ***
+*** uWSGI is running in multiple interpreter mode ***
+gracefully (RE)spawned uWSGI master process (pid: 1)
+spawned uWSGI worker 1 (pid: 30, cores: 1)
+spawned uWSGI worker 2 (pid: 31, cores: 1)
+spawned uWSGI http 1 (pid: 32)
+2025-11-13 16:05:14,780 INFO  [ckan.config.environment] Loading static files from public
+2025-11-13 16:05:14,792 INFO  [ckan.config.environment] Loading static files from public
+2025-11-13 16:05:15,271 INFO  [ckan.config.environment] Loading templates from /srv/app/src/ckan/ckan/templates
+2025-11-13 16:05:15,290 INFO  [ckan.config.environment] Loading templates from /srv/app/src/ckan/ckan/templates
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3361, in _wrap_pool_connect
+    return fn()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 320, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 884, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 486, in checkout
+    rec = pool._do_get()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 145, in _do_get
+    with util.safe_reraise():
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 266, in _create_connection
+    return _ConnectionRecord(self)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 381, in __init__
+    self.__connect()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 677, in __connect
+    with util.safe_reraise():
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 673, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/create.py", line 578, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 598, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/usr/lib/python3.10/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "db" (172.30.138.142), port 5432 failed: FATAL:  database "ckan" does not exist
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/srv/app/./wsgi.py", line 20, in <module>
+    application = make_app(config)
+  File "/srv/app/src/ckan/ckan/config/middleware/__init__.py", line 27, in make_app
+    load_environment(conf)
+  File "/srv/app/src/ckan/ckan/config/environment.py", line 69, in load_environment
+    p.load_all()
+  File "/srv/app/src/ckan/ckan/plugins/core.py", line 220, in load_all
+    unload_all()
+  File "/srv/app/src/ckan/ckan/plugins/core.py", line 270, in unload_all
+    unload(*reversed(_PLUGINS))
+  File "/srv/app/src/ckan/ckan/plugins/core.py", line 302, in unload
+    plugins_update()
+  File "/srv/app/src/ckan/ckan/plugins/core.py", line 212, in plugins_update
+    environment.update_config()
+  File "/srv/app/src/ckan/ckan/config/environment.py", line 216, in update_config
+    model.init_model(engine)
+  File "/srv/app/src/ckan/ckan/model/__init__.py", line 164, in init_model
+    Table('alembic_version', meta.metadata, autoload=True)
+  File "<string>", line 2, in __new__
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/deprecations.py", line 309, in warned
+    return fn(*args, **kwargs)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/sql/schema.py", line 616, in __new__
+    with util.safe_reraise():
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/sql/schema.py", line 612, in __new__
+    table._init(name, metadata, *args, **kw)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/sql/schema.py", line 687, in _init
+    self._autoload(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/sql/schema.py", line 720, in _autoload
+    insp = inspection.inspect(autoload_with)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/inspection.py", line 64, in inspect
+    ret = reg(subject)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/reflection.py", line 182, in _engine_insp
+    return Inspector._construct(Inspector._init_engine, bind)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/reflection.py", line 117, in _construct
+    init(self, bind)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/reflection.py", line 128, in _init_engine
+    engine.connect().close()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3315, in connect
+    return self._connection_cls(self, close_with_result=close_with_result)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 96, in __init__
+    else engine.raw_connection()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3394, in raw_connection
+    return self._wrap_pool_connect(self.pool.connect, _connection)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3364, in _wrap_pool_connect
+    Connection._handle_dbapi_exception_noconnection(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2198, in _handle_dbapi_exception_noconnection
+    util.raise_(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3361, in _wrap_pool_connect
+    return fn()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 320, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 884, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 486, in checkout
+    rec = pool._do_get()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 145, in _do_get
+    with util.safe_reraise():
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 266, in _create_connection
+    return _ConnectionRecord(self)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 381, in __init__
+    self.__connect()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 677, in __connect
+    with util.safe_reraise():
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 673, in __connect
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3361, in _wrap_pool_connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/create.py", line 578, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 598, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/usr/lib/python3.10/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) connection to server at "db" (172.30.138.142), port 5432 failed: FATAL:  database "ckan" does not exist
+
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+unable to load app 0 (mountpoint='') (callable not found or import error)
+    return fn()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 320, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 884, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 486, in checkout
+    rec = pool._do_get()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 145, in _do_get
+    with util.safe_reraise():
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 266, in _create_connection
+    return _ConnectionRecord(self)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 381, in __init__
+    self.__connect()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 677, in __connect
+    with util.safe_reraise():
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 673, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/create.py", line 578, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 598, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/usr/lib/python3.10/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "db" (172.30.138.142), port 5432 failed: FATAL:  database "ckan" does not exist
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/srv/app/./wsgi.py", line 20, in <module>
+    application = make_app(config)
+  File "/srv/app/src/ckan/ckan/config/middleware/__init__.py", line 27, in make_app
+    load_environment(conf)
+  File "/srv/app/src/ckan/ckan/config/environment.py", line 69, in load_environment
+    p.load_all()
+  File "/srv/app/src/ckan/ckan/plugins/core.py", line 220, in load_all
+    unload_all()
+  File "/srv/app/src/ckan/ckan/plugins/core.py", line 270, in unload_all
+    unload(*reversed(_PLUGINS))
+  File "/srv/app/src/ckan/ckan/plugins/core.py", line 302, in unload
+    plugins_update()
+  File "/srv/app/src/ckan/ckan/plugins/core.py", line 212, in plugins_update
+    environment.update_config()
+  File "/srv/app/src/ckan/ckan/config/environment.py", line 216, in update_config
+    model.init_model(engine)
+  File "/srv/app/src/ckan/ckan/model/__init__.py", line 164, in init_model
+    Table('alembic_version', meta.metadata, autoload=True)
+  File "<string>", line 2, in __new__
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/deprecations.py", line 309, in warned
+    return fn(*args, **kwargs)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/sql/schema.py", line 616, in __new__
+    with util.safe_reraise():
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/sql/schema.py", line 612, in __new__
+    table._init(name, metadata, *args, **kw)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/sql/schema.py", line 687, in _init
+    self._autoload(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/sql/schema.py", line 720, in _autoload
+    insp = inspection.inspect(autoload_with)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/inspection.py", line 64, in inspect
+    ret = reg(subject)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/reflection.py", line 182, in _engine_insp
+    return Inspector._construct(Inspector._init_engine, bind)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/reflection.py", line 117, in _construct
+    init(self, bind)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/reflection.py", line 128, in _init_engine
+    engine.connect().close()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3315, in connect
+    return self._connection_cls(self, close_with_result=close_with_result)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 96, in __init__
+    else engine.raw_connection()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3394, in raw_connection
+    return self._wrap_pool_connect(self.pool.connect, _connection)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3364, in _wrap_pool_connect
+    Connection._handle_dbapi_exception_noconnection(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2198, in _handle_dbapi_exception_noconnection
+    util.raise_(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3361, in _wrap_pool_connect
+    return fn()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 320, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 884, in _checkout
+2025-11-13 16:05:15,323 INFO  [ckan.config.environment] Loading static files from public
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 486, in checkout
+    rec = pool._do_get()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 145, in _do_get
+    with util.safe_reraise():
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 266, in _create_connection
+    return _ConnectionRecord(self)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 381, in __init__
+    self.__connect()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 677, in __connect
+    with util.safe_reraise():
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 673, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/create.py", line 578, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 598, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/usr/lib/python3.10/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) connection to server at "db" (172.30.138.142), port 5432 failed: FATAL:  database "ckan" does not exist
+
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+unable to load app 0 (mountpoint='') (callable not found or import error)
+2025-11-13 16:05:15,336 INFO  [ckan.config.environment] Loading static files from public
+2025-11-13 16:05:15,660 INFO  [ckan.config.environment] Loading templates from /srv/app/src/ckan/ckan/templates
+2025-11-13 16:05:15,662 INFO  [ckan.config.environment] Loading templates from /srv/app/src/ckan/ckan/templates
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3361, in _wrap_pool_connect
+    return fn()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 320, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 884, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 486, in checkout
+    rec = pool._do_get()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 145, in _do_get
+    with util.safe_reraise():
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 266, in _create_connection
+    return _ConnectionRecord(self)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 381, in __init__
+    self.__connect()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 677, in __connect
+    with util.safe_reraise():
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 673, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/create.py", line 578, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 598, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/usr/lib/python3.10/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "db" (172.30.138.142), port 5432 failed: FATAL:  database "ckan" does not exist
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/srv/app/wsgi.py", line 20, in <module>
+    application = make_app(config)
+  File "/srv/app/src/ckan/ckan/config/middleware/__init__.py", line 27, in make_app
+    load_environment(conf)
+  File "/srv/app/src/ckan/ckan/config/environment.py", line 69, in load_environment
+    p.load_all()
+  File "/srv/app/src/ckan/ckan/plugins/core.py", line 220, in load_all
+    unload_all()
+  File "/srv/app/src/ckan/ckan/plugins/core.py", line 270, in unload_all
+    unload(*reversed(_PLUGINS))
+  File "/srv/app/src/ckan/ckan/plugins/core.py", line 302, in unload
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3361, in _wrap_pool_connect
+    plugins_update()
+  File "/srv/app/src/ckan/ckan/plugins/core.py", line 212, in plugins_update
+    environment.update_config()
+  File "/srv/app/src/ckan/ckan/config/environment.py", line 216, in update_config
+    model.init_model(engine)
+  File "/srv/app/src/ckan/ckan/model/__init__.py", line 164, in init_model
+    Table('alembic_version', meta.metadata, autoload=True)
+  File "<string>", line 2, in __new__
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/deprecations.py", line 309, in warned
+    return fn(*args, **kwargs)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/sql/schema.py", line 616, in __new__
+    with util.safe_reraise():
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    return fn()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 320, in connect
+    raise exception
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/sql/schema.py", line 612, in __new__
+    return _ConnectionFairy._checkout(self)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 884, in _checkout
+    table._init(name, metadata, *args, **kw)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/sql/schema.py", line 687, in _init
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 486, in checkout
+    self._autoload(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/sql/schema.py", line 720, in _autoload
+    rec = pool._do_get()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 145, in _do_get
+    with util.safe_reraise():
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    insp = inspection.inspect(autoload_with)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/inspection.py", line 64, in inspect
+    ret = reg(subject)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/reflection.py", line 182, in _engine_insp
+    raise exception
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 266, in _create_connection
+    return Inspector._construct(Inspector._init_engine, bind)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/reflection.py", line 117, in _construct
+    init(self, bind)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/reflection.py", line 128, in _init_engine
+    return _ConnectionRecord(self)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 381, in __init__
+    engine.connect().close()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3315, in connect
+    self.__connect()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 677, in __connect
+    with util.safe_reraise():
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 673, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/create.py", line 578, in connect
+    return self._connection_cls(self, close_with_result=close_with_result)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 96, in __init__
+    return dialect.connect(*cargs, **cparams)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 598, in connect
+    else engine.raw_connection()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3394, in raw_connection
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/usr/lib/python3.10/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "db" (172.30.138.142), port 5432 failed: FATAL:  database "ckan" does not exist
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/srv/app/wsgi.py", line 20, in <module>
+    application = make_app(config)
+  File "/srv/app/src/ckan/ckan/config/middleware/__init__.py", line 27, in make_app
+    load_environment(conf)
+  File "/srv/app/src/ckan/ckan/config/environment.py", line 69, in load_environment
+    p.load_all()
+  File "/srv/app/src/ckan/ckan/plugins/core.py", line 220, in load_all
+    unload_all()
+  File "/srv/app/src/ckan/ckan/plugins/core.py", line 270, in unload_all
+    unload(*reversed(_PLUGINS))
+  File "/srv/app/src/ckan/ckan/plugins/core.py", line 302, in unload
+    return self._wrap_pool_connect(self.pool.connect, _connection)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3364, in _wrap_pool_connect
+    plugins_update()
+  File "/srv/app/src/ckan/ckan/plugins/core.py", line 212, in plugins_update
+    environment.update_config()
+  File "/srv/app/src/ckan/ckan/config/environment.py", line 216, in update_config
+    model.init_model(engine)
+  File "/srv/app/src/ckan/ckan/model/__init__.py", line 164, in init_model
+    Table('alembic_version', meta.metadata, autoload=True)
+  File "<string>", line 2, in __new__
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/deprecations.py", line 309, in warned
+    return fn(*args, **kwargs)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/sql/schema.py", line 616, in __new__
+    with util.safe_reraise():
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    Connection._handle_dbapi_exception_noconnection(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2198, in _handle_dbapi_exception_noconnection
+    raise exception
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/sql/schema.py", line 612, in __new__
+    table._init(name, metadata, *args, **kw)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/sql/schema.py", line 687, in _init
+    self._autoload(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/sql/schema.py", line 720, in _autoload
+    util.raise_(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3361, in _wrap_pool_connect
+    insp = inspection.inspect(autoload_with)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/inspection.py", line 64, in inspect
+    ret = reg(subject)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/reflection.py", line 182, in _engine_insp
+    return Inspector._construct(Inspector._init_engine, bind)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/reflection.py", line 117, in _construct
+    init(self, bind)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/reflection.py", line 128, in _init_engine
+    engine.connect().close()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3315, in connect
+    return fn()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 320, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 884, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 486, in checkout
+    return self._connection_cls(self, close_with_result=close_with_result)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 96, in __init__
+    else engine.raw_connection()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3394, in raw_connection
+    rec = pool._do_get()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 145, in _do_get
+    with util.safe_reraise():
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 266, in _create_connection
+    return _ConnectionRecord(self)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 381, in __init__
+    self.__connect()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 677, in __connect
+    with util.safe_reraise():
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    return self._wrap_pool_connect(self.pool.connect, _connection)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3364, in _wrap_pool_connect
+    compat.raise_(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 673, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/create.py", line 578, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 598, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/usr/lib/python3.10/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+    Connection._handle_dbapi_exception_noconnection(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2198, in _handle_dbapi_exception_noconnection
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) connection to server at "db" (172.30.138.142), port 5432 failed: FATAL:  database "ckan" does not exist
+
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+unable to load app 0 (mountpoint='') (callable not found or import error)
+*** no app loaded. going in full dynamic mode ***
+    util.raise_(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3361, in _wrap_pool_connect
+    return fn()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 320, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 884, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 486, in checkout
+    rec = pool._do_get()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 145, in _do_get
+    with util.safe_reraise():
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 266, in _create_connection
+    return _ConnectionRecord(self)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 381, in __init__
+    self.__connect()
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 677, in __connect
+    with util.safe_reraise():
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 673, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/create.py", line 578, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/usr/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 598, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/usr/lib/python3.10/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) connection to server at "db" (172.30.138.142), port 5432 failed: FATAL:  database "ckan" does not exist
+
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+unable to load app 0 (mountpoint='') (callable not found or import error)
+*** no app loaded. going in full dynamic mode ***
+--- no python application found, check your startup logs for errors ---
+--- no python application found, check your startup logs for errors ---
+--- no python application found, check your startup logs for errors ---
+[start_ckan.sh] Running prerun.py...

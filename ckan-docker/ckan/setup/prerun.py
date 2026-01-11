@@ -93,14 +93,15 @@ def check_solr_connection(retry=None):
 
 
 def init_db():
-
     db_command = ["ckan", "-c", ckan_ini, "db", "init"]
     print("[prerun] Initializing or upgrading db - start")
     try:
         subprocess.check_output(db_command, stderr=subprocess.STDOUT)
         print("[prerun] Initializing or upgrading db - end")
     except subprocess.CalledProcessError as e:
-        if "OperationalError" in e.output:
+        # output = e.output  # e.output is bytes
+        # decoded_output = output.decode("utf-8", errors="ignore")  # decode before checking
+        if b"OperationalError" in e.output:
             print(e.output)
             print("[prerun] Database not ready, waiting a bit before exit...")
             time.sleep(5)
@@ -144,7 +145,9 @@ def init_datastore_db():
         print(str(e))
 
     except subprocess.CalledProcessError as e:
-        if "OperationalError" in e.output:
+        output = e.output
+        if b"OperationalError" in output:
+            print(output.decode("utf-8", errors="ignore"))
             print(e.output)
             print("[prerun] Database not ready, waiting a bit before exit...")
             time.sleep(5)

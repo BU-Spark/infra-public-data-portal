@@ -2,8 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    kompose.cmd: kompose convert -f docker-compose.yml
-    kompose.version: 1.32.0 (765fde254)
+    kompose.cmd: kompose convert -f docker-compose.dev.yml -o ../ckan-docker-to-kubes/
+    kompose.version: 1.36.0 (ae2a39403)
   labels:
     io.kompose.service: redis
   name: redis
@@ -15,10 +15,9 @@ spec:
   template:
     metadata:
       annotations:
-        kompose.cmd: kompose convert -f docker-compose.yml
-        kompose.version: 1.32.0 (765fde254)
+        kompose.cmd: kompose convert -f docker-compose.dev.yml -o ../ckan-docker-to-kubes/
+        kompose.version: 1.36.0 (ae2a39403)
       labels:
-        io.kompose.network/ckan-default: "true"
         io.kompose.service: redis
     spec:
       containers:
@@ -30,8 +29,4 @@ spec:
                 - -e
                 - QUIT
           name: redis
-          ports:
-            - containerPort: 6379
-              hostPort: 6379
-              protocol: TCP
       restartPolicy: Always

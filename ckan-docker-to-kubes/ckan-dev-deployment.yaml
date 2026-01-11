@@ -2,8 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    kompose.cmd: kompose convert -f docker-compose.yml
-    kompose.version: 1.32.0 (765fde254)
+    kompose.cmd: kompose convert -f docker-compose.dev.yml -o ../ckan-docker-to-kubes/
+    kompose.version: 1.36.0 (ae2a39403)
   labels:
     io.kompose.service: ckan-dev
   name: ckan-dev
@@ -17,295 +17,16 @@ spec:
   template:
     metadata:
       annotations:
-        kompose.cmd: kompose convert -f docker-compose.yml
-        kompose.version: 1.32.0 (765fde254)
+        kompose.cmd: kompose convert -f docker-compose.dev.yml -o ../ckan-docker-to-kubes/
+        kompose.version: 1.36.0 (ae2a39403)
       labels:
-        io.kompose.network/ckan-default: "true"
         io.kompose.service: ckan-dev
     spec:
       containers:
-        - env:
-            - name: CKAN_CONTAINER_NAME
-              valueFrom:
-                configMapKeyRef:
-                  key: CKAN_CONTAINER_NAME
-                  name: env
-            - name: CKAN_DATAPUSHER_URL
-              valueFrom:
-                configMapKeyRef:
-                  key: CKAN_DATAPUSHER_URL
-                  name: env
-            - name: CKAN_DATASTORE_READ_URL
-              valueFrom:
-                configMapKeyRef:
-                  key: CKAN_DATASTORE_READ_URL
-                  name: env
-            - name: CKAN_DATASTORE_WRITE_URL
-              valueFrom:
-                configMapKeyRef:
-                  key: CKAN_DATASTORE_WRITE_URL
-                  name: env
-            - name: CKAN_PORT
-              valueFrom:
-                configMapKeyRef:
-                  key: CKAN_PORT
-                  name: env
-            - name: CKAN_PORT_HOST
-              valueFrom:
-                configMapKeyRef:
-                  key: CKAN_PORT_HOST
-                  name: env
-            - name: CKAN_REDIS_URL
-              valueFrom:
-                configMapKeyRef:
-                  key: CKAN_REDIS_URL
-                  name: env
-            - name: CKAN_SITE_ID
-              valueFrom:
-                configMapKeyRef:
-                  key: CKAN_SITE_ID
-                  name: env
-            - name: CKAN_SITE_URL
-              valueFrom:
-                configMapKeyRef:
-                  key: CKAN_SITE_URL
-                  name: env
-            - name: CKAN_SMTP_MAIL_FROM
-              valueFrom:
-                configMapKeyRef:
-                  key: CKAN_SMTP_MAIL_FROM
-                  name: env
-            - name: CKAN_SMTP_PASSWORD
-              valueFrom:
-                configMapKeyRef:
-                  key: CKAN_SMTP_PASSWORD
-                  name: env
-            - name: CKAN_SMTP_SERVER
-              valueFrom:
-                configMapKeyRef:
-                  key: CKAN_SMTP_SERVER
-                  name: env
-            - name: CKAN_SMTP_STARTTLS
-              valueFrom:
-                configMapKeyRef:
-                  key: CKAN_SMTP_STARTTLS
-                  name: env
-            - name: CKAN_SMTP_USER
-              valueFrom:
-                configMapKeyRef:
-                  key: CKAN_SMTP_USER
-                  name: env
-            - name: CKAN_SOLR_URL
-              valueFrom:
-                configMapKeyRef:
-                  key: CKAN_SOLR_URL
-                  name: env
-            - name: CKAN_SQLALCHEMY_URL
-              valueFrom:
-                configMapKeyRef:
-                  key: CKAN_SQLALCHEMY_URL
-                  name: env
-            - name: CKAN_STORAGE_PATH
-              valueFrom:
-                configMapKeyRef:
-                  key: CKAN_STORAGE_PATH
-                  name: env
-            - name: CKAN_SYSADMIN_EMAIL
-              valueFrom:
-                configMapKeyRef:
-                  key: CKAN_SYSADMIN_EMAIL
-                  name: env
-            - name: CKAN_SYSADMIN_NAME
-              valueFrom:
-                configMapKeyRef:
-                  key: CKAN_SYSADMIN_NAME
-                  name: env
-            - name: CKAN_SYSADMIN_PASSWORD
-              valueFrom:
-                configMapKeyRef:
-                  key: CKAN_SYSADMIN_PASSWORD
-                  name: env
-            - name: CKAN_VERSION
-              valueFrom:
-                configMapKeyRef:
-                  key: CKAN_VERSION
-                  name: env
-            - name: CKAN__DATAPUSHER__CALLBACK_URL_BASE
-              valueFrom:
-                configMapKeyRef:
-                  key: CKAN__DATAPUSHER__CALLBACK_URL_BASE
-                  name: env
-            - name: CKAN__HARVEST__MQ__HOSTNAME
-              valueFrom:
-                configMapKeyRef:
-                  key: CKAN__HARVEST__MQ__HOSTNAME
-                  name: env
-            - name: CKAN__HARVEST__MQ__PORT
-              valueFrom:
-                configMapKeyRef:
-                  key: CKAN__HARVEST__MQ__PORT
-                  name: env
-            - name: CKAN__HARVEST__MQ__REDIS_DB
-              valueFrom:
-                configMapKeyRef:
-                  key: CKAN__HARVEST__MQ__REDIS_DB
-                  name: env
-            - name: CKAN__HARVEST__MQ__TYPE
-              valueFrom:
-                configMapKeyRef:
-                  key: CKAN__HARVEST__MQ__TYPE
-                  name: env
-            - name: CKAN__PLUGINS
-              valueFrom:
-                configMapKeyRef:
-                  key: CKAN__PLUGINS
-                  name: env
-            - name: CKAN___API_TOKEN__JWT__DECODE__SECRET
-              valueFrom:
-                configMapKeyRef:
-                  key: CKAN___API_TOKEN__JWT__DECODE__SECRET
-                  name: env
-            - name: CKAN___API_TOKEN__JWT__ENCODE__SECRET
-              valueFrom:
-                configMapKeyRef:
-                  key: CKAN___API_TOKEN__JWT__ENCODE__SECRET
-                  name: env
-            - name: CKAN___BEAKER__SESSION__SECRET
-              valueFrom:
-                configMapKeyRef:
-                  key: CKAN___BEAKER__SESSION__SECRET
-                  name: env
-            - name: DATAPUSHER_CONTAINER_NAME
-              valueFrom:
-                configMapKeyRef:
-                  key: DATAPUSHER_CONTAINER_NAME
-                  name: env
-            - name: DATAPUSHER_REWRITE_RESOURCES
-              valueFrom:
-                configMapKeyRef:
-                  key: DATAPUSHER_REWRITE_RESOURCES
-                  name: env
-            - name: DATAPUSHER_REWRITE_URL
-              valueFrom:
-                configMapKeyRef:
-                  key: DATAPUSHER_REWRITE_URL
-                  name: env
-            - name: DATAPUSHER_VERSION
-              valueFrom:
-                configMapKeyRef:
-                  key: DATAPUSHER_VERSION
-                  name: env
-            - name: DATASTORE_READONLY_PASSWORD
-              valueFrom:
-                configMapKeyRef:
-                  key: DATASTORE_READONLY_PASSWORD
-                  name: env
-            - name: DATASTORE_READONLY_USER
-              valueFrom:
-                configMapKeyRef:
-                  key: DATASTORE_READONLY_USER
-                  name: env
-            - name: NGINX_CONTAINER_NAME
-              valueFrom:
-                configMapKeyRef:
-                  key: NGINX_CONTAINER_NAME
-                  name: env
-            - name: NGINX_PORT
-              valueFrom:
-                configMapKeyRef:
-                  key: NGINX_PORT
-                  name: env
-            - name: NGINX_PORT_HOST
-              valueFrom:
-                configMapKeyRef:
-                  key: NGINX_PORT_HOST
-                  name: env
-            - name: NGINX_SSLPORT
-              valueFrom:
-                configMapKeyRef:
-                  key: NGINX_SSLPORT
-                  name: env
-            - name: NGINX_SSLPORT_HOST
-              valueFrom:
-                configMapKeyRef:
-                  key: NGINX_SSLPORT_HOST
-                  name: env
-            - name: POSTGRESQL_CONTAINER_NAME
-              valueFrom:
-                configMapKeyRef:
-                  key: POSTGRESQL_CONTAINER_NAME
-                  name: env
-            - name: POSTGRES_HOST
-              valueFrom:
-                configMapKeyRef:
-                  key: POSTGRES_HOST
-                  name: env
-            - name: POSTGRES_PASSWORD
-              valueFrom:
-                configMapKeyRef:
-                  key: POSTGRES_PASSWORD
-                  name: env
-            - name: POSTGRES_USER
-              valueFrom:
-                configMapKeyRef:
-                  key: POSTGRES_USER
-                  name: env
-            - name: REDIS_CONTAINER_NAME
-              valueFrom:
-                configMapKeyRef:
-                  key: REDIS_CONTAINER_NAME
-                  name: env
-            - name: REDIS_VERSION
-              valueFrom:
-                configMapKeyRef:
-                  key: REDIS_VERSION
-                  name: env
-            - name: SOLR_CONTAINER_NAME
-              valueFrom:
-                configMapKeyRef:
-                  key: SOLR_CONTAINER_NAME
-                  name: env
-            - name: SOLR_IMAGE_VERSION
-              valueFrom:
-                configMapKeyRef:
-                  key: SOLR_IMAGE_VERSION
-                  name: env
-            - name: TEST_CKAN_DATASTORE_READ_URL
-              valueFrom:
-                configMapKeyRef:
-                  key: TEST_CKAN_DATASTORE_READ_URL
-                  name: env
-            - name: TEST_CKAN_DATASTORE_WRITE_URL
-              valueFrom:
-                configMapKeyRef:
-                  key: TEST_CKAN_DATASTORE_WRITE_URL
-                  name: env
-            - name: TEST_CKAN_REDIS_URL
-              valueFrom:
-                configMapKeyRef:
-                  key: TEST_CKAN_REDIS_URL
-                  name: env
-            - name: TEST_CKAN_SOLR_URL
-              valueFrom:
-                configMapKeyRef:
-                  key: TEST_CKAN_SOLR_URL
-                  name: env
-            - name: TEST_CKAN_SQLALCHEMY_URL
-              valueFrom:
-                configMapKeyRef:
-                  key: TEST_CKAN_SQLALCHEMY_URL
-                  name: env
-            - name: TZ
-              valueFrom:
-                configMapKeyRef:
-                  key: TZ
-                  name: env
-            - name: WORKER_CONTAINER_NAME
-              valueFrom:
-                configMapKeyRef:
-                  key: WORKER_CONTAINER_NAME
-                  name: env
-          image: ckan-dev
+        - envFrom:
+            - configMapRef:
+                name: env
+          image: quay.io/buspark_test/spark-ckan:latest
           livenessProbe:
             exec:
               command:
@@ -315,20 +36,17 @@ spec:
                 - http://localhost:5000
           name: ckan
           ports:
-            - containerPort: 80
-              hostIP: 0.0.0.0
-              hostPort: 5000
+            - containerPort: 5000
               protocol: TCP
           volumeMounts:
             - mountPath: /var/lib/ckan
               name: ckan-storage
-            - mountPath: /srv/app/src_extensions
-              name: ckan-dev-claim1
+            - mountPath: /srv/app/config
+              name: ckan-config
       restartPolicy: Always
       volumes:
         - name: ckan-storage
           persistentVolumeClaim:
             claimName: ckan-storage
-        - name: ckan-dev-claim1
-          persistentVolumeClaim:
-            claimName: ckan-dev-claim1
+        - name: ckan-config
+          emptyDir: {}

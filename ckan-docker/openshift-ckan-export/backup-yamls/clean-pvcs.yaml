@@ -1,0 +1,64 @@
+apiVersion: v1
+items:
+  - apiVersion: v1
+    kind: PersistentVolumeClaim
+    metadata:
+      annotations: {}
+      labels:
+        io.kompose.service: ckan-storage
+      name: ckan-storage
+    spec:
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 100Mi
+      storageClassName: gp3
+      volumeMode: Filesystem
+  - apiVersion: v1
+    kind: PersistentVolumeClaim
+    metadata:
+      annotations: {}
+      labels:
+        io.kompose.service: nginx-certs
+      name: nginx-certs
+    spec:
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 100Mi
+      storageClassName: gp3
+      volumeMode: Filesystem
+  - apiVersion: v1
+    kind: PersistentVolumeClaim
+    metadata:
+      annotations: {}
+      labels:
+        io.kompose.service: pg-data
+      name: pg-data
+    spec:
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 100Mi
+      storageClassName: gp3
+      volumeMode: Filesystem
+  - apiVersion: v1
+    kind: PersistentVolumeClaim
+    metadata:
+      annotations: {}
+      labels:
+        io.kompose.service: solr-data
+      name: solr-data
+    spec:
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 100Mi
+      storageClassName: gp3
+      volumeMode: Filesystem
+kind: List
+metadata:

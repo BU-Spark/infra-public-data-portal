@@ -1,0 +1,145 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"PersistentVolumeClaim","metadata":{"annotations":{},"labels":{"io.kompose.service":"ckan-storage"},"name":"ckan-storage","namespace":"buspark-test-dev"},"spec":{"accessModes":["ReadWriteOnce"],"resources":{"requests":{"storage":"100Mi"}}}}
+      pv.kubernetes.io/bind-completed: "yes"
+      pv.kubernetes.io/bound-by-controller: "yes"
+      volume.beta.kubernetes.io/storage-provisioner: ebs.csi.aws.com
+      volume.kubernetes.io/selected-node: ip-10-0-34-36.ec2.internal
+      volume.kubernetes.io/storage-provisioner: ebs.csi.aws.com
+    creationTimestamp: "2025-06-25T09:25:01Z"
+    finalizers:
+    - kubernetes.io/pvc-protection
+    labels:
+      io.kompose.service: ckan-storage
+    name: ckan-storage
+    namespace: buspark-test-dev
+    resourceVersion: "2622602808"
+    uid: 7739c28a-fed9-4b00-910f-1ab8f8c35deb
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 100Mi
+    storageClassName: gp3
+    volumeMode: Filesystem
+    volumeName: pvc-7739c28a-fed9-4b00-910f-1ab8f8c35deb
+  status:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"PersistentVolumeClaim","metadata":{"annotations":{},"labels":{"io.kompose.service":"nginx-certs"},"name":"nginx-certs","namespace":"buspark-test-dev"},"spec":{"accessModes":["ReadWriteOnce"],"resources":{"requests":{"storage":"100Mi"}}}}
+      pv.kubernetes.io/bind-completed: "yes"
+      pv.kubernetes.io/bound-by-controller: "yes"
+      volume.beta.kubernetes.io/storage-provisioner: ebs.csi.aws.com
+      volume.kubernetes.io/selected-node: ip-10-0-29-118.ec2.internal
+      volume.kubernetes.io/storage-provisioner: ebs.csi.aws.com
+    creationTimestamp: "2025-06-25T13:25:26Z"
+    finalizers:
+    - kubernetes.io/pvc-protection
+    labels:
+      io.kompose.service: nginx-certs
+    name: nginx-certs
+    namespace: buspark-test-dev
+    resourceVersion: "2627655863"
+    uid: 9d4034b3-f698-43f0-8b4b-b1cc95b311b1
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 100Mi
+    storageClassName: gp3
+    volumeMode: Filesystem
+    volumeName: pvc-9d4034b3-f698-43f0-8b4b-b1cc95b311b1
+  status:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"PersistentVolumeClaim","metadata":{"annotations":{},"labels":{"io.kompose.service":"pg-data"},"name":"pg-data","namespace":"buspark-test-dev"},"spec":{"accessModes":["ReadWriteOnce"],"resources":{"requests":{"storage":"100Mi"}}}}
+      pv.kubernetes.io/bind-completed: "yes"
+      pv.kubernetes.io/bound-by-controller: "yes"
+      volume.beta.kubernetes.io/storage-provisioner: ebs.csi.aws.com
+      volume.kubernetes.io/selected-node: ip-10-0-29-118.ec2.internal
+      volume.kubernetes.io/storage-provisioner: ebs.csi.aws.com
+    creationTimestamp: "2025-06-25T13:25:18Z"
+    finalizers:
+    - kubernetes.io/pvc-protection
+    labels:
+      io.kompose.service: pg-data
+    name: pg-data
+    namespace: buspark-test-dev
+    resourceVersion: "2627651305"
+    uid: 7b32e735-7082-4dca-8c73-7dc76d1897cf
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 100Mi
+    storageClassName: gp3
+    volumeMode: Filesystem
+    volumeName: pvc-7b32e735-7082-4dca-8c73-7dc76d1897cf
+  status:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"PersistentVolumeClaim","metadata":{"annotations":{},"labels":{"io.kompose.service":"solr-data"},"name":"solr-data","namespace":"buspark-test-dev"},"spec":{"accessModes":["ReadWriteOnce"],"resources":{"requests":{"storage":"100Mi"}}}}
+      pv.kubernetes.io/bind-completed: "yes"
+      pv.kubernetes.io/bound-by-controller: "yes"
+      volume.beta.kubernetes.io/storage-provisioner: ebs.csi.aws.com
+      volume.kubernetes.io/selected-node: ip-10-0-34-36.ec2.internal
+      volume.kubernetes.io/storage-provisioner: ebs.csi.aws.com
+    creationTimestamp: "2025-06-25T13:25:20Z"
+    finalizers:
+    - kubernetes.io/pvc-protection
+    labels:
+      io.kompose.service: solr-data
+    name: solr-data
+    namespace: buspark-test-dev
+    resourceVersion: "2627652476"
+    uid: 238a3f8b-3aa4-45b0-bc44-546cd41aa12c
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 100Mi
+    storageClassName: gp3
+    volumeMode: Filesystem
+    volumeName: pvc-238a3f8b-3aa4-45b0-bc44-546cd41aa12c
+  status:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    phase: Bound
+kind: List
+metadata:
+  resourceVersion: ""
